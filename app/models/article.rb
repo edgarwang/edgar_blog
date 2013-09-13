@@ -1,6 +1,8 @@
 class Article < ActiveRecord::Base
   before_save :create_url
 
+  validates :title, presence: true
+
   def to_param
     return id if url.empty?
 
