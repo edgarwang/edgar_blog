@@ -1,4 +1,8 @@
-source 'http://ruby.taobao.org'
+if ENV['dev']
+  source 'http://ruby.taobao.org'
+else
+  source 'http://rubygems.org'
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
