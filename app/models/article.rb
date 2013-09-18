@@ -1,20 +1,20 @@
 class Article < ActiveRecord::Base
-  before_save :create_url
+  before_save :generate_slug
 
   validates :title, presence: true
-  validates :url, allow_blank: true, format: {
+  validates :slug, allow_blank: true, format: {
     with: /\A[-a-z]+[^-]\z/,
     message: "Only lower letters and - allowed"
   }
 
   def to_param
-    return id if url.empty?
+    return id if slug.empty?
 
-    "#{id}-#{url}"
+    [id, slug].join('-')
   end
 
   private
-    def create_url
-      self.url = self.title.parameterize if url.empty?
+    def generate_slug
+      self.slug = self.title.parameterize if slug.empty?
     end
 end
