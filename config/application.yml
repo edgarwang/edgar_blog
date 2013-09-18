@@ -1,0 +1,11 @@
+defaults: &defaults
+  site_title: "Edgar Wang's Wonderland"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
