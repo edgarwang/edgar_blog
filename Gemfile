@@ -39,8 +39,6 @@ gem 'settingslogic'
 
 gem 'thin'
 
-gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
-
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
