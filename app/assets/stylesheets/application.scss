@@ -12,3 +12,16 @@
  *= require semantic.min
  *= require_tree .
  */
+
+body {
+  background: none repeat scroll 0% 0% rgb(253, 253, 253);
+}
+
+div.wrap {
+  width: 60%;
+  margin: 0px auto 5em;
+}
+
+section.top {
+  margin-top: 12px;
+}

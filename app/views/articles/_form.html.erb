@@ -1,7 +1,7 @@
-<%= form_for(@article, html: { role: "form" }) do |f| %>
+<%= form_for(@article, html: { class: 'ui form' }) do |f| %>
   <% if @article.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <h2 class="ui header"><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
       <ul>
       <% @article.errors.full_messages.each do |msg| %>
@@ -11,23 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field form-group">
+  <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title, class: 'form-control' %>
+    <div class="ui left labeled">
+      <%= f.text_field :title %>
+    </div>
   </div>
-  <div class="field form-group">
+  <div class="field">
     <%= f.label :slug, 'SLUG' %><br>
-    <%= f.text_field :slug, class: 'form-control' %>
+    <div class="ui left labeled input">
+      <%= f.text_field :slug %>
+    </div>
   </div>
-  <div class="field form-group">
+  <div class="field">
     <%= f.label :content %><br>
-    <%= f.text_area :content, class: 'form-control' %>
+    <div class="ui left labeled input">
+      <%= f.text_area :content %>
+    </div>
   </div>
-  <div class="field form-group">
-    <%= f.label :published %><br>
-    <%= f.check_box :published, { class: 'form-control' }, checked_value = true, unchecked_value = false %>
+  <div class="inline field">
+    <label>Published</label>
+    <div class="ui checkbox">
+      <%= f.check_box :published, { }, checked_value = true, unchecked_value = false %>
+      <%= f.label :published do %>
+      <% end %>
+    </div>
   </div>
   <div class="actions">
-    <%= f.submit '保存', class: 'btn btn-default' %>
+    <%= f.submit '保存', class: 'ui blue submit button' %>
   </div>
 <% end %>
