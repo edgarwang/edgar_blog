@@ -4,8 +4,8 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    #@articles = Article.all
-    @articles = Article.all_published_articles
+    @articles = Article.all
+    #@articles = Article.all_published_articles
   end
 
   # GET /articles/1
