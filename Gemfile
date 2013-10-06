@@ -41,6 +41,8 @@ gem 'thin'
 
 gem 'bower-rails'
 
+gem 'github-markdown'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'

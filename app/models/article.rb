@@ -9,11 +9,14 @@ class Article < ActiveRecord::Base
 
   scope :published, -> { where(published: true) }
 
-
   def to_param
     return id if slug.empty?
 
     [id, slug].join('-')
+  end
+
+  def html_content
+    GitHub::Markdown.render_gfm(self.content).html_safe
   end
 
   private
