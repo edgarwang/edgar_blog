@@ -2,23 +2,5 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 
-<table class="ui table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>SLUG</th>
-      <th>Content</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @article.title %></td>
-      <td><%= @article.slug %></td>
-      <td><%= @article.html_content %></td>
-      <td><%= link_to 'Edit', edit_article_path(@article) %></td>
-      <td><%= link_to 'Back', articles_path %></td>
-    </tr>
-  </tbody>
-</table>
+<h1 class="ui header"><%= @article.title %></h1>
+<div><%= @article.html_content %></div>
