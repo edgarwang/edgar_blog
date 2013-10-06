@@ -18,12 +18,18 @@ pre {
 }
 
 a {
-  color: rgb(34, 34, 34);
+  color: rgb(229, 0, 81);
   text-decoration: none;
   &:visited {
   }
+}
+
+.ui.header a {
+  color: rgb(34, 34, 34);
+  &:visited {
+  }
   &:hover {
-    color: rgb(229, 0, 83);
+    color: rgb(229, 0, 81);
   }
 }
 

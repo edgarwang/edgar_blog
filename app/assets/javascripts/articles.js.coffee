@@ -14,9 +14,10 @@
 # Enable markdown editor for blog content
 enableMarkdownEditor = ->
   textArea = document.getElementById('editor')
-  CodeMirror.fromTextArea(textArea, {
-    mode: 'gfm',
-    viewportMargin: Infinity
-  })
+  if textArea
+    CodeMirror.fromTextArea(textArea, {
+      mode: 'gfm',
+      viewportMargin: Infinity
+    })
 $(document).ready(enableMarkdownEditor)
 $(document).on('page:load', enableMarkdownEditor)

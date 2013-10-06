@@ -15,7 +15,6 @@ end
 def render_markdown(text)
   render_options = {
     filter_html:     true,
-    hard_wrap:       true, 
     link_attributes: { rel: 'nofollow' }
   }
   renderer = HTMLRender.new(render_options)

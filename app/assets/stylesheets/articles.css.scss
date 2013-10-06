@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //= require codemirror/lib/codemirror
+//= require pygments-css/github
 
 // Allow CodeMirror reize to fit content
 .CodeMirror {
@@ -12,4 +13,8 @@
 .CodeMirror-scroll {
   overflow-y: hidden;
   overflow-x: auto;
+}
+
+article {
+  font-size: 18px;
 }

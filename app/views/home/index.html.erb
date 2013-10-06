@@ -4,7 +4,7 @@
       <%= link_to article.title, article %>
     </h2>
     <div class="content">
-      <%= (truncate article.content, length: 320, omisson: '...').html_safe  %>
+      <%= (truncate article.content, length: 200, omisson: '...').html_safe  %>
     </div>
   </article>
 <% end %>
