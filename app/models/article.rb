@@ -16,7 +16,7 @@ class Article < ActiveRecord::Base
   end
 
   def html_content
-    GitHub::Markdown.render_gfm(self.content).html_safe
+    render_markdown(self.content)
   end
 
   private

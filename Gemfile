@@ -38,10 +38,9 @@ gem 'settingslogic'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'thin'
-
 gem 'bower-rails'
-
-gem 'github-markdown'
+gem 'redcarpet'
+gem 'rouge'
 
 group :development, :test do
   gem 'rspec-rails'
