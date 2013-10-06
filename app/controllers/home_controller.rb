@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @articles = Article.all_published_articles
+    @articles = Article.published
   end
 
   def about
