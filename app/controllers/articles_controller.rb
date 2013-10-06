@@ -5,7 +5,6 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
-    #@articles = Article.all_published_articles
   end
 
   # GET /articles/1

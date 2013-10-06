@@ -1,0 +1,10 @@
+<% @articles.each do |article| %>
+  <article id="article-<%= article.id %>" class="ui basic segment">
+    <h2 class="ui header">
+      <%= link_to article.title, article %>
+    </h2>
+    <div class="content">
+      <%= (truncate article.content, length: 320, omisson: '...').html_safe  %>
+    </div>
+  </article>
+<% end %>
