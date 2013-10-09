@@ -41,6 +41,7 @@ gem 'thin'
 gem 'bower-rails'
 gem 'redcarpet'
 gem 'rouge'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'rspec-rails'
