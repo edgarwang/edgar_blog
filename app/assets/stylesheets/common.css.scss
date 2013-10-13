@@ -1,0 +1,20 @@
+@import "normalize";
+@import "semantic.min";
+@import "scaffolds";
+
+body {
+  background: none repeat scroll 0% 0% rgb(253, 253, 253);
+}
+
+div.wrap {
+  width: 55%;
+  margin: 0px auto 5em;
+}
+
+section.top {
+  margin-top: 12px;
+}
+
+.article {
+  margin-bottom: 1em;
+}

@@ -1,9 +1,5 @@
-// Place all the styles related to the articles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-//= require codemirror/lib/codemirror
-//= require pygments-css/github
+@import "codemirror/lib/codemirror";
+@import "pygments-css/github";
 
 // Allow CodeMirror reize to fit content
 .CodeMirror {
