@@ -18,3 +18,17 @@
 article p {
   font-size: 110%;
 }
+
+.article {
+  .main.menu {
+    top: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ui.segment {
+    max-width: 860px;
+    margin: 0 auto 5em;
+    padding-top: 60px;
+  }
+}

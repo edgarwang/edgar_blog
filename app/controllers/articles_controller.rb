@@ -19,6 +19,9 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    respond_to do |format|
+      format.html { render action: 'edit', layout: 'dashboard' }
+    end
   end
 
   # POST /articles
