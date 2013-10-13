@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  layout 'dashboard'
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
@@ -10,6 +11,10 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    respond_to do |format|
+      format.html { render action: 'show', layout: 'home' }
+      format.json
+    end
   end
 
   # GET /articles/new
@@ -19,9 +24,6 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    respond_to do |format|
-      format.html { render action: 'edit', layout: 'dashboard' }
-    end
   end
 
   # POST /articles
