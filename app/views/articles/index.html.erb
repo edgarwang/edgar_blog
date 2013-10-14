@@ -1,27 +1,23 @@
-<table class="ui sortable table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>SLUG</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.slug %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div class="ui selection list">
+  <% @articles.each do |article| %>
+    <div class="item">
+      <div class="right floated">
+        <div class="ui basic buttons">
+          <%= link_to article, class: 'ui button' do %>
+            <i class="external url icon"></i>
+        <% end %>
+          <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' do %>
+            <i class="remove icon"></i>
+        <% end %>
+        </div>
+      </div>
+      <div class="content">
+        <div class="header">
+          <%= link_to article.title, edit_article_path(article) %>
+        </div>
+        <%= article.updated_at %>
+      </div>
+  </div>
+<% end %>
 
 <%= link_to 'New Article', new_article_path, class: 'ui green button' %>
