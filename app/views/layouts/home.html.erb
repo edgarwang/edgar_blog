@@ -2,17 +2,15 @@
 <html>
 <head>
   <title><%= site_title %></title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <%= stylesheet_link_tag    "home", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "home", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 
-<body class="<%= controller_name %> <%= action_name %>">
+<body id="home" class="<%= controller_name %> <%= action_name %>">
 
-<div class="wrap">
-  <section class="top">
     <header class="ui left floated header">
       Edgar Wang
     </header>
@@ -21,16 +19,12 @@
       <a class="item" href="">About</a>
     </nav>
     <hr class="ui clearing divider">
-  </section>
 
-  <section class="content">
     <%= yield %>
-  </section>
 
   <footer>
     <div class="ui divider"></div>
   </footer>
-</div>
 
 </body>
 </html>
