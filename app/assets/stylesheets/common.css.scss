@@ -1,20 +1,77 @@
 @import "normalize";
 @import "semantic.min";
-@import "scaffolds";
 
 body {
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
   background: none repeat scroll 0% 0% rgb(253, 253, 253);
 }
 
-div.wrap {
-  width: 55%;
-  margin: 0px auto 5em;
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
 }
 
-section.top {
-  margin-top: 12px;
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
 }
 
-.article {
-  margin-bottom: 1em;
+a {
+  color: rgb(229, 0, 81);
+  text-decoration: none;
+  &:visited {
+  }
+}
+
+.ui.header a {
+  color: rgb(34, 34, 34);
+  &:visited {
+  }
+  &:hover {
+    color: rgb(229, 0, 81);
+  }
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
 }
