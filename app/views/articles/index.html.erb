@@ -1,3 +1,5 @@
+<%= render "dashboard/top_menu" %>
+
 <div class="ui selection list">
   <% @articles.each do |article| %>
     <div class="item">
@@ -19,5 +21,3 @@
       </div>
   </div>
 <% end %>
-
-<%= link_to 'New Article', new_article_path, class: 'ui green button' %>
