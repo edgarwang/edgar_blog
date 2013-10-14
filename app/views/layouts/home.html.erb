@@ -11,20 +11,25 @@
 
 <body id="home" class="<%= controller_name %> <%= action_name %>">
 
-    <header class="ui left floated header">
-      Edgar Wang
-    </header>
-    <nav class="ui right floated text menu">
-      <a class="item" href="<%= root_path %>">Home</a>
-      <a class="item" href="">About</a>
-    </nav>
-    <hr class="ui clearing divider">
+<div class="wrapper">
+  <div class="ui text menu">
+    <div class="left floated item">
+      <header class="header"><a href="<%= root_path %>">Edgar Wang</a></header>
+    </div>
+    <div class="right floated item">
+      <nav class="ui right floated text menu">
+        <a class="item" href="<%= root_path %>">Home</a>
+        <a class="item" href="">About</a>
+      </nav>
+    </div>
+  </div>
 
-    <%= yield %>
+  <hr class="ui clearing divider">
+  <%= yield %>
+  <hr class="ui divider"></hr>
 
-  <footer>
-    <div class="ui divider"></div>
-  </footer>
+  <%= render 'shared/footer' %>
+</div>
 
 </body>
 </html>

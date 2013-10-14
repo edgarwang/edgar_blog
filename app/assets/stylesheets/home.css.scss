@@ -4,3 +4,10 @@
 
 @import "common";
 @import "pygments-css/github";
+
+// A wrapper to make a centered column
+.wrapper {
+  width: 60%;
+  margin: 0 auto 3em;
+  padding-top: 2px;
+}
