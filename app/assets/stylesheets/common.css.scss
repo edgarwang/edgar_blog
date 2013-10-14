@@ -43,8 +43,16 @@ div {
 }
 
 footer {
-  font-size: 92%;
-  text-align: center;
+  font-size: 85%;
+
+  .copyright {
+    float: left;
+    padding-left: 10px;
+  }
+  .saying {
+    float: right;
+    padding-right: 10px;
+  }
 }
 
 #notice {
