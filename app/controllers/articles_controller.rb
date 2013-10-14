@@ -1,20 +1,17 @@
 class ArticlesController < ApplicationController
-  layout 'dashboard'
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
   def index
     @articles = Article.all
+    render layout: 'dashboard'
   end
 
   # GET /articles/1
   # GET /articles/1.json
   def show
-    respond_to do |format|
-      format.html { render action: 'show', layout: 'home' }
-      format.json
-    end
+    render layout: 'home'
   end
 
   # GET /articles/new
