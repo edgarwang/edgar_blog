@@ -1,23 +1,23 @@
-<%= render "dashboard/top_menu" %>
-
+<%= render "dashboard/article_toolbar" %>
 <div class="ui selection list">
   <% @articles.each do |article| %>
     <div class="item">
-      <div class="right floated">
-        <div class="ui basic buttons">
-          <%= link_to article, class: 'ui button' do %>
-            <i class="external url icon"></i>
+    <div class="right floated">
+      <div class="ui basic buttons">
+        <%= link_to article, class: 'ui button' do %>
+          <i class="external url icon"></i>
         <% end %>
-          <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' do %>
-            <i class="remove icon"></i>
+        <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' do %>
+          <i class="remove icon"></i>
         <% end %>
-        </div>
       </div>
-      <div class="content">
-        <div class="header">
-          <%= link_to article.title, edit_article_path(article) %>
-        </div>
-        <%= article.updated_at %>
+    </div>
+    <div class="content">
+      <div class="header">
+        <%= link_to article.title, edit_article_path(article) %>
       </div>
+      <%= article.updated_at %>
+    </div>
   </div>
-<% end %>
+  <% end %>
+</div>

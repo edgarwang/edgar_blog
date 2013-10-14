@@ -10,7 +10,17 @@
 </head>
 <body>
 
-<%= yield %>
+<div class="ui grid">
+  <div class="three wide sidebar column">
+    <%= render "dashboard/sidebar" %>
+  </div>
+
+  <div class="twelve wide content column">
+    <div class="ui content segment">
+      <%= yield %>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

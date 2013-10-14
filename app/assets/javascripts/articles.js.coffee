@@ -17,3 +17,11 @@ enableMarkdownEditor = ->
     })
 $(document).ready(enableMarkdownEditor)
 $(document).on('page:load', enableMarkdownEditor)
+
+
+toggleMenu = ->
+  $(document).on 'click', '#toggle-menu', ->
+    $('.sidebar')
+      .sidebar('toggle')
+$(document).ready(toggleMenu)
+$(document).on('page:load', toggleMenu)
