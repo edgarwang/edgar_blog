@@ -5,13 +5,15 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.all_by_status(params[:status])
+
     render layout: 'dashboard'
   end
 
   # GET /articles/1
   # GET /articles/1.json
   def show
+    not_found if !@article.published?
     render layout: 'home'
   end
 

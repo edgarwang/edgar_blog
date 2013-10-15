@@ -4,9 +4,12 @@
     <div class="item">
     <div class="right floated">
       <div class="ui basic buttons">
-        <%= link_to article, class: 'ui button' do %>
-          <i class="external url icon"></i>
+        <% if article.published? %>
+          <%= link_to article, class: 'ui button' do %>
+            <i class="external url icon"></i>
+          <% end %>
         <% end %>
+
         <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' do %>
           <i class="remove icon"></i>
         <% end %>

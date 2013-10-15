@@ -11,6 +11,31 @@ class Article < ActiveRecord::Base
   scope :draft,     -> { where(status: 'draft') }
   scope :published, -> { where(status: 'published') }
 
+  # Select all element with specific status
+  def self.all_by_status(status)
+    case status
+    when 'published'
+      return published
+    when 'draft'
+      return draft
+    when 'trash'
+      return trash
+    else
+      return all
+    end
+  end
+
+  # 3 methods to determine article's status
+  def draft?
+    status == 'draft'
+  end
+  def published?
+    status == 'published'
+  end
+  def trash?
+    status == 'trash'
+  end
+
   def to_param
     return id if slug.empty?
 
