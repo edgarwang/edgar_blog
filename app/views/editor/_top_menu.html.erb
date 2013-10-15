@@ -1,13 +1,15 @@
-<nav class="ui menu">
+<nav class="ui fixed transparent main menu">
   <a class="link item" title="返回文章列表" href="<%= articles_path %>">
     <i class="level up icon"></i>
   </a>
 
+  <a id="set-article-slug" class="item" title="URL">
+    <i class="flag icon"></i>
+  </a>
+
   <% if @article.persisted? %>
-    <div class="right floated menu">
-      <a class="link item" target="_blank" href="<%= article_path(@article) %>">
-        <i class="external url icon"></i>
-      </a>
-    </div>
+    <a class="link item" target="_blank" href="<%= article_path(@article) %>">
+      <i class="external url icon"></i>
+    </a>
   <% end %>
 </nav>

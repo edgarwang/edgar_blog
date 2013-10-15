@@ -12,12 +12,16 @@
 
 .ui.grid {
   padding-top: 20px;
-  .sidebar.column {
-  }
 }
 
 .content.column {
   .content.segment {
     border-radius: 0 0 0 0;
   }
+}
+
+.editor.area {
+  padding-top: 70px;
+  width: 61%;
+  margin: 0 auto 3em;
 }
