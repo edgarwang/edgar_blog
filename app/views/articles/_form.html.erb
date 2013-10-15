@@ -19,7 +19,7 @@
     </div>
     <div class="field">
       <div class="ui left input">
-        <%= f.hidden_field :slug, placeholder: "Article Slug" %>
+        <%= f.select :status, [['Draft', 'draft'], ['Published', 'published']] %>
       </div>
     </div>
   </div>
@@ -29,11 +29,8 @@
     </div>
   </div>
   <div class="inline field">
-    <label>Published</label>
-    <div class="ui checkbox">
-      <%= f.check_box :published, { }, checked_value = true, unchecked_value = false %>
-      <%= f.label :published do %>
-      <% end %>
+    <div class="ui input">
+      <%= f.hidden_field :slug, placeholder: "Article Slug" %>
     </div>
   </div>
   <div class="actions inline field">

@@ -7,7 +7,9 @@ class Article < ActiveRecord::Base
     message: "Only lower letters and - allowed"
   }
 
-  scope :published, -> { where(published: true) }
+  scope :trash,     -> { where(status: 'trash') }
+  scope :draft,     -> { where(status: 'draft') }
+  scope :published, -> { where(status: 'published') }
 
   def to_param
     return id if slug.empty?
