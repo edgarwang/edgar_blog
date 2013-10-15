@@ -9,17 +9,14 @@ God.watch do |w|
   w.start = "cd #{rails_root} && bundle exec unicorn_rails -c #{rails_root}/current/config/unicorn.rb -E #{rails_env} -D"
 
   # QUIT gracefully shuts down workers
-  w.stop = "kill -QUIT `cat #{rails_root}/tmp/unicorn.pid`"
+  w.stop = "kill -QUIT cat #{rails_root}/tmp/unicorn.pid"
 
   # USR2 causes the master to re-create itself and spawn a new worker pool
-  w.restart = "kill -USR2 `cat #{rails_root}/tmp/unicorn.pid`"
+  w.restart = "kill -USR2 cat #{rails_root}/tmp/unicorn.pid"
 
   w.start_grace = 10.seconds
   w.restart_grace = 10.seconds
   w.pid_file = "#{rails_root}/tmp/unicorn.pid"
-
-  w.uid = 'blog'
-  w.gid = 'blog'
 
   w.behavior(:clean_pid_file)
 
