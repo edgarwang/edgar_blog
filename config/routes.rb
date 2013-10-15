@@ -5,6 +5,7 @@ EdgarBlogs::Application.routes.draw do
   resources :articles do
     collection do
       get 'trash', to: 'articles#trash'
+      delete 'trashed', to: 'articles#empty_trash'
     end
   end
 

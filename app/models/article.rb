@@ -10,18 +10,17 @@ class Article < ActiveRecord::Base
   scope :trash,     -> { where(status: 'trash') }
   scope :draft,     -> { where(status: 'draft') }
   scope :published, -> { where(status: 'published') }
+  scope :not_trash, -> { where.not(status: 'trash') }
 
   # Select all element with specific status
-  def self.all_by_status(status)
+  def self.all_by_status_except_trash(status)
     case status
     when 'published'
       return published
     when 'draft'
       return draft
-    when 'trash'
-      return trash
     else
-      return all
+      return not_trash
     end
   end
 

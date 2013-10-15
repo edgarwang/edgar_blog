@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all_by_status(params[:status])
+    @articles = Article.all_by_status_except_trash(params[:status])
 
     render layout: 'dashboard'
   end
@@ -69,6 +69,16 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to articles_url }
       format.json { head :no_content }
+    end
+  end
+
+  # DELETE /articles
+  def empty_trash
+    Article.trash.each do |article|
+      article.destroy
+    end
+    respond_to do |format|
+      format.html { redirect_to trash_articles_url }
     end
   end
 
