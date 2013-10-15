@@ -37,13 +37,12 @@ gem 'settingslogic'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-gem 'thin'
 gem 'bower-rails'
 gem 'redcarpet'
 gem 'rouge'
-gem 'newrelic_rpm'
 
 group :development, :test do
+  gem 'thin'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
@@ -61,8 +60,11 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-# Use unicorn as the app server
-gem 'unicorn'
+group :production do
+  gem 'god'
+  gem 'unicorn'
+  gem 'newrelic_rpm'
+end
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
