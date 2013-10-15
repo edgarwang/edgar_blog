@@ -11,21 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <div class="ui left labeled">
-      <%= f.text_field :title %>
+  <div class="two fields">
+    <div class="field">
+      <div class="ui left input">
+        <%= f.text_field :title, placeholder: "Article Title" %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left input">
+        <%= f.hidden_field :slug, placeholder: "Article Slug" %>
+      </div>
     </div>
   </div>
   <div class="field">
-    <%= f.label :slug, 'SLUG' %><br>
-    <div class="ui left labeled input">
-      <%= f.text_field :slug %>
-    </div>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <div class="ui left labeled input">
+    <div class="ui left input">
       <%= f.text_area :content, id: 'editor' %>
     </div>
   </div>

@@ -1,9 +1,4 @@
-// Place all the styles related to the articles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-//= require codemirror/lib/codemirror
-//= require pygments-css/github
+@import "codemirror/lib/codemirror";
 
 // Allow CodeMirror reize to fit content
 .CodeMirror {
@@ -15,6 +10,18 @@
   overflow-x: auto;
 }
 
-article {
-  font-size: 18px;
+.ui.grid {
+  padding-top: 20px;
+}
+
+.content.column {
+  .content.segment {
+    border-radius: 0 0 0 0;
+  }
+}
+
+.editor.area {
+  padding-top: 70px;
+  width: 61%;
+  margin: 0 auto 3em;
 }

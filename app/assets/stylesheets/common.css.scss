@@ -1,41 +1,57 @@
+@import "normalize";
+@import "semantic.min";
+@import "variables";
+
 body {
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  line-height: $commonLineHeight;
+  background: none repeat scroll 0% 0% rgb(253, 253, 253);
 }
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  line-height: $commonLineHeight;
 }
 
 pre {
   background-color: #eee;
   padding: 10px;
-  font-size: 11px;
 }
 
 a {
-  color: rgb(229, 0, 81);
-  text-decoration: none;
-  &:visited {
+  color: rgb(229, 0, 83);
+    text-decoration: none;
+  &:hover {
+    text-decoration: underline;
   }
+
 }
 
-.ui.header a {
+.header a {
   color: rgb(34, 34, 34);
-  &:visited {
-  }
   &:hover {
-    color: rgb(229, 0, 81);
+    color: rgb(229, 0, 83);
+    text-decoration: none;
   }
 }
 
 div {
   &.field, &.actions {
     margin-bottom: 10px;
+  }
+}
+
+footer {
+  font-size: 85%;
+
+  .copyright {
+    float: left;
+    padding-left: 10px;
+  }
+  .saying {
+    float: right;
+    padding-right: 10px;
   }
 }
 

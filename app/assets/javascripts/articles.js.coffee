@@ -1,7 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
 #= require codemirror/lib/codemirror
 #= require codemirror/addon/mode/overlay
 #= require codemirror/mode/gfm/gfm
@@ -21,3 +17,20 @@ enableMarkdownEditor = ->
     })
 $(document).ready(enableMarkdownEditor)
 $(document).on('page:load', enableMarkdownEditor)
+
+# Sync two article slug input's value
+showSetArticleSlugModal = ->
+  hiddenArticleSlug = document.querySelector('#article_slug')
+  modalArticleSlug = document.querySelector('#article-slug')
+  $('#save-slug').on 'click', ->
+    hiddenArticleSlug.value = modalArticleSlug.value
+  $('#set-article-slug').on 'click', ->
+    $('.article.slug.modal')
+      .modal('setting', 'debug', false)
+      .modal('setting', 'closable', false)
+      .modal('setting', 'onShow', ->
+        modalArticleSlug.value = hiddenArticleSlug.value
+      )
+      .modal('show')
+$(document).ready(showSetArticleSlugModal)
+$(document).on('page:load', showSetArticleSlugModal)
