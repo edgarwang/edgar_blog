@@ -10,6 +10,12 @@ class ArticlesController < ApplicationController
     render layout: 'dashboard'
   end
 
+  # GET /articles/trash
+  def trash
+    @articles = Article.trash
+    render layout: 'dashboard'
+  end
+
   # GET /articles/1
   # GET /articles/1.json
   def show

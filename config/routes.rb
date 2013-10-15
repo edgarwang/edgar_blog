@@ -2,7 +2,11 @@ EdgarBlogs::Application.routes.draw do
   get 'home/index'
   get 'home/about'
 
-  resources :articles
+  resources :articles do
+    collection do
+      get 'trash', to: 'articles#trash'
+    end
+  end
 
   root 'home#index'
 
