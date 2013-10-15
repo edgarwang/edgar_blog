@@ -1,2 +1,14 @@
 @import "common";
-@import "articles";
+@import "codemirror/lib/codemirror";
+@import "editor";
+
+.dashboard.grid {
+  padding-top: 20px;
+}
+
+.content.column {
+  .content.segment {
+    border-radius: 0 0 0 0;
+    padding: 11px 16px 12px 16px;
+  }
+}

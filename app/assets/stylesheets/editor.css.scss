@@ -1,5 +1,3 @@
-@import "codemirror/lib/codemirror";
-
 // Allow CodeMirror reize to fit content
 .CodeMirror {
   border: 1px solid #eee;
@@ -8,17 +6,6 @@
 .CodeMirror-scroll {
   overflow-y: hidden;
   overflow-x: auto;
-}
-
-.ui.grid {
-  padding-top: 20px;
-}
-
-.content.column {
-  .content.segment {
-    border-radius: 0 0 0 0;
-    padding: 11px 16px 12px 16px;
-  }
 }
 
 .editor.area {
