@@ -1,4 +1,5 @@
 EdgarBlogs::Application.routes.draw do
+  get "user/new"
   root 'home#index'
 
   get 'home/index'
