@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: [:create]
 
+  def new
+  end
+
   def create
     auth = request.env['omniauth.auth']
     @current_user = User.find_with_omniauth(auth)
