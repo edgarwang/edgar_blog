@@ -1,4 +1,6 @@
 EdgarBlogs::Application.routes.draw do
+  root 'home#index'
+
   get 'home/index'
   get 'home/about'
 
@@ -9,7 +11,7 @@ EdgarBlogs::Application.routes.draw do
     end
   end
 
-  root 'home#index'
+  post '/auth/:provider/callback' => 'sessions#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
