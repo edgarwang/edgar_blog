@@ -11,7 +11,9 @@ EdgarBlogs::Application.routes.draw do
     end
   end
 
-  post '/auth/:provider/callback' => 'sessions#create'
+  post '/auth/:provider/callback', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
