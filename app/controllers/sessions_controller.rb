@@ -5,9 +5,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    auth = request.env['omniauth.auth']
-    @current_user = User.find_with_omniauth(auth)
-    redirect_to root_url
+    user = User.find_by(email: params[:email])
+    if user && user.authenticate(params[:password])
+      @current_user = user
+    else
+      flash.now.alert = "Invalid email or password"
+      render 'new'
+    end
   end
 
   def destroy

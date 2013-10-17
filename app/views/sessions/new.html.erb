@@ -1,7 +1,7 @@
-<%= form_tag "/auth/identity/callback" do %>
+<%= form_tag "/login" do %>
   <div class="field">
-    <%= label_tag :auth_key, "Email" %><br>
-    <%= text_field_tag :auth_key %>
+    <%= label_tag :email, "Email" %><br>
+    <%= text_field_tag :email %>
   </div>
   <div class="field">
     <%= label_tag :password %><br>

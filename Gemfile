@@ -12,7 +12,6 @@ gem 'bower-rails'
 gem 'settingslogic'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'omniauth-identity'
 
 gem 'redcarpet'
 gem 'rouge'
