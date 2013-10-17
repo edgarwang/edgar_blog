@@ -8,7 +8,7 @@
   <%= javascript_include_tag "dashboard", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body id="dashboard" class="<%= controller_name %> <%= action_name %>">
 
 <div class="ui dashboard grid">
   <div class="three wide sidebar column">

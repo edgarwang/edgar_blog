@@ -30,6 +30,11 @@ module EdgarBlogs
     config.middleware.delete 'Rack::Lock'
     config.middleware.delete 'ActionDispatch::RequestId'
     config.middleware.delete 'ActionDispatch::RemoteIp'
+
+    # disable field_with_errors wrapper
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
+      "#{html_tag}".html_safe 
+    }
     
     config.autoload_paths += %W(#{config.root}/lib)
 

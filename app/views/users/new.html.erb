@@ -1,7 +1,42 @@
-<%= form_for @user do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :email %>
-  <%= f.password_field :password %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit %>
+<%= form_for @user, html: { class: "ui error form segment" } do |f| %>
+  <% if @user.errors.any? %>
+    <div class="ui error message">
+      <h2 class="header"><%= pluralize(@user.errors.count, "error") %> prohibited this from being saved:</h2>
+      <ul class="list">
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <div class="ui left labeled icon input">
+      <%= f.text_field :name %>
+      <i class="user icon"></i>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+    <div class="ui left labeled icon input">
+      <%= f.text_field :email %>
+      <i class="mail icon"></i>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <div class="ui left labeled icon input">
+      <%= f.password_field :password %>
+      <i class="lock icon"></i>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <div class="ui left labeled icon input">
+      <%= f.password_field :password_confirmation %>
+      <i class="lock icon"></i>
+    </div>
+  </div>
+  <%= f.submit "提交", class: "ui blue submit button" %>
 <% end %>
