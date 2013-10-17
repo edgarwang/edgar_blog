@@ -1,5 +1,4 @@
 EdgarBlogs::Application.routes.draw do
-  get "user/new"
   root 'home#index'
 
   get 'home/index'
@@ -11,6 +10,11 @@ EdgarBlogs::Application.routes.draw do
       delete 'trashed', to: 'articles#empty_trash'
     end
   end
+
+  resources :users, only: [:new, :create]
+
+  get 'user/new'
+  post 'user/create'
 
   post '/auth/:provider/callback', to: 'sessions#create'
   get '/login', to: 'sessions#new'
