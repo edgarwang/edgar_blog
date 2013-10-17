@@ -1,4 +1,9 @@
 <%= form_tag sign_in_path, class: "ui error form segment" do %>
+  <% if notice %>
+    <div class="ui error message">
+      <%= notice %>
+    </div>
+  <% end %>
   <div class="field">
     <%= label_tag :email %><br>
     <div class="ui left labeled icon input">
@@ -13,5 +18,5 @@
       <i class="lock icon"></i>
     </div>
   </div>
-  <%= submit_tag "Login", class: "ui blue submit button" %>
+  <%= submit_tag "Sign In", class: "ui blue submit button" %>
 <% end %>
