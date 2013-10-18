@@ -1,10 +1,8 @@
 class UsersController < ApplicationController
   layout 'auth'
+  before_action :only_allow_one_user
 
   def new
-    if has_one_user?
-      redirect_to sign_in_url, notice: 'Already has a user now'
-    end
     @user = User.new
   end
 
@@ -27,6 +25,10 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+
+    def only_allow_one_user
+      redirect_to root_url, alert: 'Sorry, this site is not open for sign up' if has_one_user?
     end
 
     def has_one_user?

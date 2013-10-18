@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   layout 'editor'
+  before_action :require_signed_in!, only: [:index, :new, :create, :edit, :update, :destroy]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles

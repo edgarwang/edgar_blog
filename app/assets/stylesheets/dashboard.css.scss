@@ -4,6 +4,12 @@
 
 .dashboard.grid {
   padding-top: 20px;
+  .sidebar.column {
+    padding-right: 1px;
+  }
+  .content.column {
+    padding-left: 0;
+  }
 }
 
 .content.column {

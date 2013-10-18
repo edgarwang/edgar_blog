@@ -1,0 +1,19 @@
+<div class="message box">
+  <% if alert %>
+    <div id="alert" class="ui error message">
+    <i class="close icon"></i>
+    <div class="header">
+      <%= alert %>
+    </div>
+  </div>
+  <% end %>
+
+  <% if notice %>
+    <div id="notice" class="ui warning message">
+    <i class="close icon"></i>
+    <div class="header">
+      <%= notice %>
+    </div>
+  </div>
+  <% end %>
+</div>

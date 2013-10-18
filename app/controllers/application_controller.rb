@@ -18,6 +18,12 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user, :signed_in?
 
+  def require_signed_in!
+  unless signed_in?
+    redirect_to root_url, alert: 'Please Sign In First'
+  end
+  end
+
   def current_user=(user)
     @current_user = user
     session[:user_id] = user.nil? ? user : user.id
