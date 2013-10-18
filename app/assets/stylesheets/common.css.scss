@@ -42,6 +42,17 @@ div {
   }
 }
 
+// Add a new message form for show all
+// kinds of messages
+.ui.message.form {
+  .success.message,
+  .info.message,
+  .warning.message,
+  .error.message {
+    display: block;
+  }
+}
+
 footer {
   font-size: 85%;
 

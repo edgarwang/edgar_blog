@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  layout 'auth'
   before_action :only_allow_one_user
+  layout 'auth'
 
   def new
     @user = User.new
@@ -11,7 +11,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to sign_in_url, notice: 'Article was successfully created.' }
+        flash[:success] = 'User was successfully created. Please sign in here.';
+        format.html { redirect_to sign_in_url }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }

@@ -1,9 +1,6 @@
-<%= form_tag sign_in_path, class: "ui error form segment" do %>
-  <% if notice %>
-    <div class="ui error message">
-      <%= notice %>
-    </div>
-  <% end %>
+<%= form_tag sign_in_path, class: "ui message form segment" do %>
+  <%= render "shared/show_flash_msg" %>
+
   <div class="field">
     <%= label_tag :email %><br>
     <div class="ui left labeled icon input">
