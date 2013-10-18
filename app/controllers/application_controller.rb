@@ -13,18 +13,23 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
   end
+
   def signed_in?
     !!current_user
   end
 
   def require_signed_in!
-  unless signed_in?
-    redirect_to root_url, alert: 'Please sign in first'
-  end
+    unless signed_in?
+      redirect_to root_url, alert: 'Please sign in first'
+    end
   end
 
   def current_user=(user)
     @current_user = user
     session[:user_id] = user.nil? ? user : user.id
+  end
+
+  def must_has_one_user
+    redirect_to sign_up_url unless User.count > 0
   end
 end
