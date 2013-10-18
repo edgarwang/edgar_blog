@@ -6,6 +6,7 @@ class Article < ActiveRecord::Base
     with: /\A[-a-z]+[^-]\z/,
     message: "Only lower letters and - allowed"
   }
+  validates :status, inclusion: { in: %w(published draft trash) }
 
   scope :trash,     -> { where(status: 'trash') }
   scope :draft,     -> { where(status: 'draft') }

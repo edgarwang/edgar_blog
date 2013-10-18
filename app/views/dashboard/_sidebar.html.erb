@@ -1,4 +1,4 @@
-<div class="ui vertical menu">
+<div class="ui vertical fluid menu">
   <a href="<%= articles_path %>" class="item <%= "active" if action_name == "index" %>">
     <i class="file outline icon"></i>
     Articles
@@ -8,4 +8,9 @@
     <i class="trash icon"></i>
     Trash
   </a>
+
+  <%= link_to sign_out_path, method: :delete, class: 'item' do %>
+    <i class="sign out icon"></i>
+    Sign Out
+  <% end %>
 </div>

@@ -1,9 +1,8 @@
 <%= form_for(@article, html: { class: 'ui form' }) do |f| %>
   <% if @article.errors.any? %>
-    <div id="error_explanation">
-      <h2 class="ui header"><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-      <ul>
+    <div class="ui error message">
+      <h2 class="header"><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <ul class="list">
       <% @article.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>

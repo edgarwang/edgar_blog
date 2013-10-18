@@ -1,0 +1,19 @@
+<%= form_tag sign_in_path, class: "ui message form segment" do %>
+  <%= render "shared/show_flash_msg" %>
+
+  <div class="field">
+    <%= label_tag :email %><br>
+    <div class="ui left labeled icon input">
+      <%= text_field_tag :email %>
+      <i class="mail icon"></i>
+    </div>
+  </div>
+  <div class="field">
+    <%= label_tag :password %><br>
+    <div class="ui left labeled icon input">
+      <%= password_field_tag :password %>
+      <i class="lock icon"></i>
+    </div>
+  </div>
+  <%= submit_tag "Sign In", class: "ui blue submit button" %>
+<% end %>

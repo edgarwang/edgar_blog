@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   layout 'editor'
+  before_action :require_signed_in!, only: [:index, :new, :create, :edit, :update, :destroy]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
@@ -39,7 +40,8 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to articles_url, notice: 'Article was successfully created.' }
+        flash[:success] = 'Article was successfully created.';
+        format.html { redirect_to articles_url }
         format.json { render action: 'show', status: :created, location: @article }
       else
         format.html { render action: 'new' }
@@ -53,7 +55,8 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to articles_url, notice: 'Article was successfully updated.' }
+        flash[:success] = 'Article was successfully updated.';
+        format.html { redirect_to articles_url }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

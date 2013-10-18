@@ -25,6 +25,17 @@ module EdgarBlogs
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # disable some unused middleware
+    config.middleware.delete 'Rack::Cache'
+    config.middleware.delete 'Rack::Lock'
+    config.middleware.delete 'ActionDispatch::RequestId'
+    config.middleware.delete 'ActionDispatch::RemoteIp'
+
+    # disable field_with_errors wrapper
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
+      "#{html_tag}".html_safe 
+    }
+    
     config.autoload_paths += %W(#{config.root}/lib)
 
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
