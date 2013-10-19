@@ -24,15 +24,15 @@
   </div>
   <div class="field">
     <div class="ui left input">
-      <%= f.text_area :content, id: 'editor' %>
+      <%= f.text_area :content, id: 'content-editor' %>
     </div>
   </div>
-  <div class="inline field">
+  <div class="field">
     <div class="ui input">
       <%= f.hidden_field :slug, placeholder: "Article Slug" %>
     </div>
   </div>
-  <div class="actions inline field">
+  <div class="actions field">
     <%= f.submit '保存', class: 'ui blue submit button' %>
   </div>
 <% end %>

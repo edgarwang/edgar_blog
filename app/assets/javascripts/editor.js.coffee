@@ -9,7 +9,7 @@
 
 # Enable markdown editor for blog content
 enableMarkdownEditor = ->
-  textArea = document.getElementById('editor')
+  textArea = document.getElementById('content-editor')
   if textArea
     CodeMirror.fromTextArea(textArea, {
       mode: 'gfm',
