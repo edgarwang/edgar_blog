@@ -1,6 +1,6 @@
 #= require jquery
 #= require jquery_ujs
-#= require semantic.min
+#= require semantic-rails/semantic.min
 #= require turbolinks
 
 closeFlashMsg = ->
