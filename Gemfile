@@ -25,7 +25,11 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'guard'
+  gem 'rb-fsevent', :require => false
   gem 'guard-rspec', require: false
+  gem 'guard-spork'
+  gem 'spork-rails'
 end
 
 group :test do

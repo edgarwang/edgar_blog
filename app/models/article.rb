@@ -1,4 +1,5 @@
 class Article < ActiveRecord::Base
+  before_save :set_default_status
   before_save :generate_slug
 
   validates :title, presence: true
@@ -49,5 +50,9 @@ class Article < ActiveRecord::Base
   private
     def generate_slug
       self.slug = self.title.parameterize if slug.empty?
+    end
+
+    def set_default_status
+      self.status = 'draft' if self.status.blank?
     end
 end
