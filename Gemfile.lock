@@ -139,6 +139,8 @@ GEM
       rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
     settingslogic (2.0.9)
+    shoulda-matchers (2.4.0)
+      activesupport (>= 3.0.0)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -200,6 +202,7 @@ DEPENDENCIES
   sdoc
   selenium-webdriver
   settingslogic
+  shoulda-matchers
   sqlite3
   thin
   turbolinks
