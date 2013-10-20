@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :article do
-    title { Faker::Lorem.word(3) }
+    title { Faker::Lorem.sentence(4) }
     slug 'a-test-article'
-    content { Faker::Lorem.paragraphs(3) }
+    content { Faker::Lorem.paragraph(5) }
 
     factory :published_article do
       status 'published'

@@ -1,5 +1,4 @@
 class Article < ActiveRecord::Base
-  before_save :set_default_status
   before_save :generate_slug
 
   validates :title, presence: true
@@ -9,18 +8,20 @@ class Article < ActiveRecord::Base
   }
   validates :status, inclusion: { in: %w(published draft trash) }
 
-  scope :trash,     -> { where(status: 'trash') }
-  scope :draft,     -> { where(status: 'draft') }
-  scope :published, -> { where(status: 'published') }
-  scope :not_trash, -> { where.not(status: 'trash') }
+  scope :trash,     -> { where(status: 'trash').order('created_at DESC') }
+  scope :draft,     -> { where(status: 'draft').order('created_at DESC') }
+  scope :published, -> { where(status: 'published').order('created_at DESC') }
+  scope :not_trash, -> { where.not(status: 'trash').order('created_at DESC') }
 
   # Select all element with specific status
-  def self.all_by_status_except_trash(status)
+  def self.all_by_status(status)
     case status
     when 'published'
       return published
     when 'draft'
       return draft
+    when 'trash'
+      return trash
     else
       return not_trash
     end
@@ -49,10 +50,6 @@ class Article < ActiveRecord::Base
 
   private
     def generate_slug
-      self.slug = self.title.parameterize if slug.empty?
-    end
-
-    def set_default_status
-      self.status = 'draft' if self.status.blank?
+      self.slug = self.title.parameterize if self.slug.blank?
     end
 end

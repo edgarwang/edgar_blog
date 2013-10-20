@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all_by_status_except_trash(params[:status])
+    @articles = Article.all_by_status(params[:status])
 
     render layout: 'dashboard'
   end
