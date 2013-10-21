@@ -75,6 +75,38 @@ describe ArticlesController do
     end
   end
 
+  describe 'GET #trash' do
+    context 'user does not signed in' do
+      it 'redrect to home#index page' do
+        get :trash
+        expect(response).to redirect_to(root_url)
+      end
+    end
+
+    context 'user has already signed in' do
+      before :each do
+        set_user_session(user)
+      end
+
+      it 'returns http success' do
+        get :trash
+        expect(response).to be_success
+      end
+
+      it 'assigns the requested trashed articles as @articles' do
+        create(:draft_article)
+        @trash = create(:trash_article)
+        get :trash
+        expect(assigns(:articles)).to match_array([@trash])
+      end
+
+      it 'renders :trash template' do
+        get :trash
+        expect(response).to render_template :trash
+      end
+    end
+  end
+
   describe 'GET #show' do
     before :each do
       @article = create(:published_article)
@@ -296,6 +328,33 @@ describe ArticlesController do
       it 'redirects to the articles list' do
         delete :destroy, { id: @article.to_param }
         expect(response).to redirect_to(articles_url)
+      end
+    end
+  end
+
+  describe 'DELETE #empty_trash' do
+    context 'user does not signed in' do
+      it 'redirect to home#index page' do
+        delete :empty_trash
+      end
+    end
+
+    context 'user has already signed in' do
+      before :each do
+        set_user_session(user)
+        create(:trash_article)
+        create(:trash_article)
+      end
+
+      it 'destroys all trashed articles' do
+        expect {
+          delete :empty_trash
+        }.to change(Article, :count).by(-2)
+      end
+
+      it 'redirects to the trashed articles list' do
+        delete :empty_trash
+        expect(response).to redirect_to(trash_articles_url)
       end
     end
   end
