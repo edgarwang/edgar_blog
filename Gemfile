@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'rails', '4.0.0'
 gem 'sqlite3'
@@ -17,14 +17,14 @@ gem 'redcarpet'
 gem 'rouge'
 
 group :development, :test do
-  gem 'thin'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
 
 group :development do
-  gem "better_errors"
-  gem "binding_of_caller"
+  gem 'thin'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'guard', '~> 2.1.1'
   gem 'rb-fsevent', :require => false
   gem 'guard-rspec', require: false
@@ -38,7 +38,8 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
-  gem "shoulda-matchers"
+  gem 'shoulda-matchers'
+  gem 'spork'
 end
 
 group :production do
