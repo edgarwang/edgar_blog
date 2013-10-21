@@ -4,4 +4,4 @@ rvm:
   - "2.0.0"
 before_script:
   - RAILS_ENV=test rake db:migrate
-script: bundle exec rspec spec/models
+script: bundle exec rspec spec/models spec/controllers/home_controller_spec.rb spec/controllers/users_controller_spec.rb spec/controllers/sessions_controller_spec.rb
