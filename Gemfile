@@ -1,4 +1,4 @@
-source 'http://ruby.taobao.org'
+source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'
 gem 'sqlite3'
@@ -23,8 +23,13 @@ group :development, :test do
 end
 
 group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem 'guard', '~> 2.1.1'
+  gem 'rb-fsevent', :require => false
+  gem 'guard-rspec', require: false
+  gem 'guard-spork'
+  gem 'spork-rails'
 end
 
 group :test do
@@ -33,6 +38,7 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem "shoulda-matchers"
 end
 
 group :production do

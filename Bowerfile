@@ -1,2 +1,3 @@
-asset 'codemirror'
+asset 'normalize-css'
 asset 'semantic-rails'
+asset 'codemirror'

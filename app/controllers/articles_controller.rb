@@ -1,12 +1,14 @@
 class ArticlesController < ApplicationController
   layout 'editor'
-  before_action :require_signed_in!, only: [:index, :new, :create, :edit, :update, :destroy]
+  before_action :require_signed_in!, only: [:index, :new, :create,
+                                            :edit, :update, :destroy,
+                                            :trash, :empty_trash]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all_by_status_except_trash(params[:status])
+    @articles = Article.all_by_status(params[:status])
 
     render layout: 'dashboard'
   end
