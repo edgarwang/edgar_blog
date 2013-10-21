@@ -45,7 +45,7 @@ describe HomeController do
     describe 'GET #about' do
       it 'returns http success' do
         get :about
-        response.should be_success
+        expect(response).to be_success
       end
 
       it 'renders the :about view' do
