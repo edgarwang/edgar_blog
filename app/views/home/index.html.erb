@@ -1,10 +1,13 @@
 <% @articles.each do |article| %>
-  <article id="article-<%= article.id %>" class="ui basic segment">
-    <h2 class="ui header">
+  <article id="article-<%= article.id %>" class="ui basic article segment">
+    <h1 class="ui header">
       <%= link_to article.title, article %>
-    </h2>
-    <div class="content">
+    </h1>
+    <div class="article digest">
       <%= (truncate article.content, length: 200, omisson: '...').html_safe  %>
+    </div>
+    <div class="read more">
+      <a href="<%= article_path(article) %>">阅读全文</a>
     </div>
   </article>
 <% end %>
