@@ -2,6 +2,15 @@
 @import "codemirror/lib/codemirror";
 @import "editor";
 
+.flash.message {
+  font-size: 80%;
+  text-align: center;
+  .ui.message {
+    border-radius: 0;
+    margin: 0 0 0 0;
+  }
+}
+
 .dashboard.grid {
   padding-top: 20px;
   .sidebar.column {

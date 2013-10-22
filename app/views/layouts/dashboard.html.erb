@@ -10,7 +10,9 @@
 </head>
 <body id="dashboard" class="<%= controller_name %> <%= action_name %>">
 
-<%= render "shared/show_flash_msg" %>
+<div class="flash message">
+  <%= render "shared/show_flash_msg" %>
+</div>
 <div class="ui dashboard grid">
   <div class="three wide sidebar column">
     <%= render "dashboard/sidebar" %>
