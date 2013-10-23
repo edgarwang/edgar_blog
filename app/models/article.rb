@@ -3,7 +3,7 @@ class Article < ActiveRecord::Base
 
   validates :title, presence: true
   validates :slug, allow_blank: true, format: {
-    with: /\A[-a-z]+[^-]\z/,
+    with: /\A[a-z1-9][-a-z1-9]+[^-]\z/,
     message: "Only lower letters and - allowed"
   }
   validates :status, inclusion: { in: %w(published draft trash) }
