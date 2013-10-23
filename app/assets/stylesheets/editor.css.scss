@@ -1,6 +1,7 @@
 // Allow CodeMirror reize to fit content
 .CodeMirror {
   border: 1px solid #eee;
+  min-height: 400px;
   height: auto;
 }
 .CodeMirror-scroll {
