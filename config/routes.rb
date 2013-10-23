@@ -9,6 +9,9 @@ EdgarBlogs::Application.routes.draw do
       get 'trash', to: 'articles#trash'
       delete 'trashed', to: 'articles#empty_trash'
     end
+    member do
+      post 'trash', to: 'articles#send_to_trash', as: 'send_to_trash'
+    end
   end
 
   resources :users, only: [:create]

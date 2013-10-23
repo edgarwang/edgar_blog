@@ -2,8 +2,8 @@ class ArticlesController < ApplicationController
   layout 'editor'
   before_action :require_signed_in!, only: [:index, :new, :create,
                                             :edit, :update, :destroy,
-                                            :trash, :empty_trash]
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+                                            :trash, :empty_trash, :send_to_trash]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :send_to_trash]
 
   # GET /articles
   # GET /articles.json
@@ -33,6 +33,15 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    respond_to do |format|
+      if @article.trash?
+        flash[:alert] = 'Cannot edit trashed article'
+        format.html { redirect_to articles_url }
+      else
+        format.html
+        format.json
+      end
+    end
   end
 
   # POST /articles
@@ -64,6 +73,16 @@ class ArticlesController < ApplicationController
         format.html { render action: 'edit' }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def send_to_trash
+    @article.send_to_trash
+
+    if @article.save
+      render text: "status=#{@article.status}"
+    else
+      return false
     end
   end
 

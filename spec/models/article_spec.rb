@@ -74,6 +74,19 @@ describe Article do
     end
   end
 
+  describe '#send_to_trash' do
+    before :each do
+      @article1 = create(:draft_article)
+      @article2 = create(:published_article)
+    end
+
+    it 'published article and draft article can both send to trash' do
+      @article1.send_to_trash && @article1.save
+      @article2.send_to_trash && @article2.save
+      expect(Article.trash).to match_array([@article1, @article2])
+    end
+  end
+
   describe 'has status determine method' do
     it '#published?' do
       published = build(:published_article)

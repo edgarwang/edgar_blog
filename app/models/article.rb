@@ -27,6 +27,10 @@ class Article < ActiveRecord::Base
     end
   end
 
+  def send_to_trash
+    self.status = 'trash'
+  end
+
   # 3 methods to determine article's status
   def draft?
     status == 'draft'

@@ -1,20 +1,16 @@
 #= require common
 #= require editor
 
+sendArticleToTrash = ->
+  $('.trash.article.button').on 'click', ->
+    $trashArticleButton = $(this)
+    send_to_trash_path = $trashArticleButton.data('send-to-trash-path')
+    $.ajax({
+      url: send_to_trash_path,
+      type: 'POST',
+      success: ->
+        $trashArticleButton.closest('.article.item').remove()
+    })
 
-# Sync two article slug input's value
-showSetArticleSlugModal = ->
-  hiddenArticleSlug = document.querySelector('#article_slug')
-  modalArticleSlug = document.querySelector('#article-slug')
-  $('#save-slug').on 'click', ->
-    hiddenArticleSlug.value = modalArticleSlug.value
-  $('#set-article-slug').on 'click', ->
-    $('.article.slug.modal')
-      .modal('setting', 'debug', false)
-      .modal('setting', 'closable', false)
-      .modal('setting', 'onShow', ->
-        modalArticleSlug.value = hiddenArticleSlug.value
-      )
-      .modal('show')
-$(document).ready(showSetArticleSlugModal)
-$(document).on('page:load', showSetArticleSlugModal)
+$(document).ready(sendArticleToTrash)
+$(document).on('page:load', sendArticleToTrash)

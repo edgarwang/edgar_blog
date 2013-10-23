@@ -189,6 +189,12 @@ describe ArticlesController do
         get :edit, { id: @article.to_param }
         expect(response).to render_template :edit
       end
+
+      it 'refuse to edit trashed article' do
+        trashed_article = create(:trash_article)
+        get :edit, { id: trashed_article.to_param }
+        expect(response).to redirect_to(articles_url)
+      end
     end
   end
 
@@ -299,6 +305,41 @@ describe ArticlesController do
           put :update, { id: @article.to_param, article: @invalid_update_attributes }
           expect(response).to render_template :edit
         end
+      end
+    end
+  end
+
+  describe 'POST #send_to_trash' do
+    before :each do
+      @article = create(:draft_article)
+    end
+
+    context 'user does not signed in' do
+      it 'rediect to home#index page' do
+        post :send_to_trash, { id: @article.to_param }
+        expect(response).to redirect_to(root_url)
+      end
+    end
+
+    context 'user has already signed in' do
+      before :each do
+        set_user_session(user)
+      end
+
+      it 'returns http success' do
+        post :send_to_trash, { id: @article.to_param }
+        expect(response).to be_success
+      end
+
+      it 'assigns requested article as @article' do
+        post :send_to_trash, { id: @article.to_param }
+        expect(assigns(:article)).to eq(@article)
+      end
+
+      it 'requested article would be move to trash' do
+        post :send_to_trash, { id: @article.to_param }
+        @article.reload
+        expect(@article.status).to eq('trash')
       end
     end
   end
