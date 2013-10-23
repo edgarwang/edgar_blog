@@ -13,7 +13,8 @@ enableMarkdownEditor = ->
   if textArea
     CodeMirror.fromTextArea(textArea, {
       mode: 'gfm',
-      viewportMargin: Infinity
+      viewportMargin: Infinity,
+      lineWrapping: true
     })
 $(document).ready(enableMarkdownEditor)
 $(document).on('page:load', enableMarkdownEditor)
