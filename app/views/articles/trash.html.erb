@@ -2,25 +2,24 @@
 <div class="ui selection list">
   <% @articles.each do |article| %>
     <div class="item">
-    <div class="right floated">
-      <div class="ui basic buttons">
-        <% if article.published? %>
-          <%= link_to article, class: 'ui button' do %>
-            <i class="external url icon"></i>
+      <div class="right floated">
+        <div class="ui basic buttons">
+          <a class="ui restore article button" title="restore this article"
+            data-restore-article-path="<%= restore_article_path(article) %>">
+            <i class="inbox icon"></i>
+          </a>
+          <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' do %>
+            <i class="remove icon"></i>
           <% end %>
-        <% end %>
+        </div>
+      </div>
 
-        <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' do %>
-          <i class="remove icon"></i>
-        <% end %>
+      <div class="content">
+        <div class="header">
+          <%= article.title %>
+        </div>
+        <%= article.updated_at %>
       </div>
     </div>
-    <div class="content">
-      <div class="header">
-        <%= link_to article.title, edit_article_path(article) %>
-      </div>
-      <%= article.updated_at %>
-    </div>
-  </div>
   <% end %>
 </div>

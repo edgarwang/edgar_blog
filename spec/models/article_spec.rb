@@ -87,6 +87,20 @@ describe Article do
     end
   end
 
+  describe '#restore' do
+    it 'restore a trashed article to draft status' do
+      article = create(:trash_article)
+      article.restore && article.save
+      expect(article.status).to eq('draft')
+    end
+
+    it 'does not work with published and draft article' do
+      article = create(:published_article)
+      article.restore && article.save
+      expect(article.status).to eq('published')
+    end
+  end
+
   describe 'has status determine method' do
     it '#published?' do
       published = build(:published_article)

@@ -344,6 +344,41 @@ describe ArticlesController do
     end
   end
 
+  describe 'POST #send_to_trash' do
+    before :each do
+      @article = create(:trash_article)
+    end
+
+    context 'user does not signed in' do
+      it 'rediect to home#index page' do
+        post :restore, { id: @article.to_param }
+        expect(response).to redirect_to(root_url)
+      end
+    end
+
+    context 'user has already signed in' do
+      before :each do
+        set_user_session(user)
+      end
+
+      it 'returns http success' do
+        post :restore, { id: @article.to_param }
+        expect(response).to be_success
+      end
+
+      it 'assigns requested article as @article' do
+        post :restore, { id: @article.to_param }
+        expect(assigns(:article)).to eq(@article)
+      end
+
+      it 'requested article would be restore' do
+        post :restore, { id: @article.to_param }
+        @article.reload
+        expect(@article.status).to eq('draft')
+      end
+    end
+  end
+
   describe 'DELETE #destroy' do
     before :each do
       @article = create(:draft_article)

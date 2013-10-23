@@ -27,8 +27,14 @@ class Article < ActiveRecord::Base
     end
   end
 
+  # Send an article to trash bin
   def send_to_trash
     self.status = 'trash'
+  end
+
+  # Restore an article from trash bin
+  def restore
+    self.status = 'draft' if self.status == 'trash'
   end
 
   # 3 methods to determine article's status

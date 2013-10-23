@@ -11,6 +11,7 @@ EdgarBlogs::Application.routes.draw do
     end
     member do
       post 'trash', to: 'articles#send_to_trash', as: 'send_to_trash'
+      post 'restore', to: 'articles#restore', as: 'restore'
     end
   end
 

@@ -2,8 +2,10 @@ class ArticlesController < ApplicationController
   layout 'editor'
   before_action :require_signed_in!, only: [:index, :new, :create,
                                             :edit, :update, :destroy,
-                                            :trash, :empty_trash, :send_to_trash]
-  before_action :set_article, only: [:show, :edit, :update, :destroy, :send_to_trash]
+                                            :trash, :empty_trash, :restore,
+                                            :send_to_trash]
+  before_action :set_article, only: [:show, :edit, :update, :destroy,
+                                     :restore, :send_to_trash]
 
   # GET /articles
   # GET /articles.json
@@ -76,8 +78,20 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # POST /articles/1/trash
   def send_to_trash
     @article.send_to_trash
+
+    if @article.save
+      render text: "status=#{@article.status}"
+    else
+      return false
+    end
+  end
+
+  # POST /articles/1/restore
+  def restore
+    @article.restore
 
     if @article.save
       render text: "status=#{@article.status}"
