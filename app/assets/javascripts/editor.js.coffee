@@ -1,5 +1,6 @@
 #= require codemirror/lib/codemirror
 #= require codemirror/addon/mode/overlay
+#= require codemirror/addon/selection/active-line
 #= require codemirror/mode/gfm/gfm
 #= require codemirror/mode/markdown/markdown
 #= require codemirror/mode/javascript/javascript
@@ -14,6 +15,7 @@ enableMarkdownEditor = ->
     CodeMirror.fromTextArea(textArea, {
       mode: 'gfm',
       viewportMargin: Infinity,
+      styleActiveLine: true,
       lineWrapping: true
     })
 $(document).ready(enableMarkdownEditor)

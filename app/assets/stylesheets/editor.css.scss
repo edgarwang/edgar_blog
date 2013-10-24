@@ -7,6 +7,14 @@
 .CodeMirror-scroll {
   overflow-y: hidden;
   overflow-x: auto;
+  .CodeMirror-sizer {
+    padding: 10px 5px 0 5px;
+  }
+}
+
+.CodeMirror-activeline-background {
+  background-color: rgba(252, 210, 230, 0.6);
+  border-radius: 3px;
 }
 
 .main.menu {
