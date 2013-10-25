@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= ::NewRelic::Agent.browser_timing_header rescue "" %>
   <title><%= site_title %></title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <%= stylesheet_link_tag    "auth", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "home", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= ::NewRelic::Agent.browser_timing_header rescue "" %>
 </head>
 
 <body id="auth" class="<%= controller_name %> <%= action_name %>">
