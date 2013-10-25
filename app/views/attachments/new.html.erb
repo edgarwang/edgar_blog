@@ -1,0 +1,7 @@
+<%= form_for @attachment, :html => {:multipart => true} do |f| %>
+  <p>
+    <label>My Avatar</label>
+    <%= f.file_field :file %>
+  </p>
+    <%= f.submit 'Upload' %>
+<% end %>
