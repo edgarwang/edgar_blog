@@ -1,7 +1,5 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :attachment do
-    file "MyString"
+    file File.open('spec/files/test.png')
   end
 end
