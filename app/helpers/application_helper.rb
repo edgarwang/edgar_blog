@@ -3,6 +3,10 @@ module ApplicationHelper
     Settings.site_title
   end
 
+  def disqus_shortname
+    Settings.disqus_shortname
+  end
+
   # Get html tag's class from flash's key
   # value for message showing
   def class_type_for_message(key)

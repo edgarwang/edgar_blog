@@ -1,5 +1,6 @@
 defaults: &defaults
   site_title: "Edgar Wang's Wonderland"
+  disqus_shortname: "edgar-blog"
 
 development:
   <<: *defaults
