@@ -1,12 +1,17 @@
 <div class="ui vertical fluid menu">
-  <a href="<%= articles_path %>" class="item <%= "active" if action_name == "index" %>">
+  <a href="<%= articles_path %>" class="item <%= "active" if articles_page? %>">
     <i class="file outline icon"></i>
     Articles
   </a>
 
-  <a href="<%= trash_articles_path %>" class="item <%= "active" if action_name == "trash" %>">
+  <a href="<%= trash_articles_path %>" class="item <%= "active" if trashes_page? %>">
     <i class="trash icon"></i>
     Trash
+  </a>
+
+  <a href="<%= attachments_path %>" class="item <%= "active" if attachments_page? %>">
+    <i class="photo icon"></i>
+    Photos
   </a>
 
   <%= link_to sign_out_path, method: :delete, class: 'item' do %>

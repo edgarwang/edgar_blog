@@ -1,3 +1,20 @@
-<% @attachments.each do |attachment| %>
-  <%= image_tag attachment.file.thumb.url.to_s %><br/>
-<% end %>
+<%= render "dashboard/attachment_toolbar" %>
+
+<div class="ui connected three items">
+  <% @attachments.each do |attachment| %>
+    <div class="item">
+      <div class="image">
+        <%= image_tag attachment.file.thumb.url.to_s, alt: attachment.file.to_s %><br/>
+        <div class="ui corner label">
+          <%= link_to attachment, method: "delete" do %>
+            <i class="remove icon"></i>
+          <% end %>
+        </div>
+      </div>
+      <div class="content">
+        <div class="meta"><%= attachment.created_at %></div>
+        <div class="name"><%= attachment.file.url %></div>
+      </div>
+    </div>
+  <% end %>
+</div>

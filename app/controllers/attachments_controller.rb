@@ -1,4 +1,7 @@
 class AttachmentsController < ApplicationController
+  layout 'dashboard'
+  before_action :require_signed_in!
+
   def new
     @attachment = Attachment.new
   end
@@ -15,6 +18,11 @@ class AttachmentsController < ApplicationController
   end
 
   def destroy
+    @attachment = Attachment.find(params[:id])
+    @attachment.destroy
+    respond_to do |format|
+      format.html { redirect_to attachments_url, notice: 'Delete Done' }
+    end
   end
 
   private
