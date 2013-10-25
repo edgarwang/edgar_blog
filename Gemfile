@@ -16,6 +16,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'redcarpet'
 gem 'rouge'
 
+gem 'carrierwave'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
