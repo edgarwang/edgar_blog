@@ -1,0 +1,10 @@
+.image img {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+a.delete.image {
+  &:hover {
+    text-decoration: none;
+  }
+}

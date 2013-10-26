@@ -24,3 +24,6 @@
 
 # Ignore newrelic config file
 config/newrelic.yml
+
+# Ignore uploads dir
+public/uploads

@@ -1,0 +1,19 @@
+<%= render "dashboard/attachment_toolbar" %>
+
+<div class="ui four items">
+  <% @attachments.each do |attachment| %>
+    <div class="item">
+      <div class="image">
+        <%= image_tag attachment.file.thumb.url.to_s, alt: attachment.file.to_s %>
+          <div class="ui corner label">
+          <%= link_to attachment, method: "delete", class: "delete image" do %>
+            <i class="remove icon"></i>
+          <% end %>
+        </div>
+      </div>
+      <div class="content">
+        <div class="meta"><%= attachment.created_at %></div>
+      </div>
+    </div>
+  <% end %>
+</div>

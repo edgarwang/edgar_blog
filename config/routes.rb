@@ -16,6 +16,7 @@ EdgarBlogs::Application.routes.draw do
   end
 
   resources :users, only: [:create]
+  resources :attachments, only: [:new, :create, :index, :destroy]
 
   get '/sign_up', to: 'users#new'
   get '/sign_in', to: 'sessions#new'
