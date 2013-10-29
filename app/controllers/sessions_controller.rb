@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   layout 'auth'
 
   def new
+    redirect_to articles_url, notice: 'Already signed in' unless session[:user_id].blank?
   end
 
   def create

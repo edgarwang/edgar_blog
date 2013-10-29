@@ -12,6 +12,14 @@ describe SessionsController do
       get :new
       expect(response).to render_template :new
     end
+
+    it 'redirect to dashboard when already signed in' do
+      user = create(:user)
+      set_user_session(user)
+
+      get :new
+      expect(response).to redirect_to(articles_url)
+    end
   end
 
   describe 'POST #create' do
