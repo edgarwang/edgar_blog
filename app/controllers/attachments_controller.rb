@@ -8,8 +8,12 @@ class AttachmentsController < ApplicationController
 
   def create
     @attachment = Attachment.new(attachment_params)
+
     if @attachment.save
-      redirect_to attachments_url
+      respond_to do |format|
+        format.html { redirect_to attachments_url, notice: 'Created Done' }
+        format.json
+      end
     end
   end
 
