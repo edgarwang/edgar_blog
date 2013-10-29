@@ -1,6 +1,7 @@
 // Allow CodeMirror reize to fit content
 .CodeMirror {
   border: 1px solid #eee;
+  line-height: 20px;
   min-height: 400px;
   height: auto;
 }
@@ -18,7 +19,6 @@
 }
 
 .main.menu {
-  background-color: transparent;
   border: none;
 }
 

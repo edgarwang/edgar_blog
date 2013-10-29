@@ -1,6 +1,7 @@
 #= require codemirror/lib/codemirror
 #= require codemirror/addon/mode/overlay
 #= require codemirror/addon/selection/active-line
+#= require codemirror/addon/display/placeholder
 #= require codemirror/mode/gfm/gfm
 #= require codemirror/mode/markdown/markdown
 #= require codemirror/mode/javascript/javascript
@@ -16,6 +17,8 @@ enableMarkdownEditor = ->
       mode: 'gfm',
       viewportMargin: Infinity,
       styleActiveLine: true,
+      setFirstLineAsTitleLine: true,
+      placeholder: 'Write something here',
       lineWrapping: true
     })
 $(document).ready(enableMarkdownEditor)
