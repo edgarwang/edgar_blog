@@ -47,7 +47,7 @@ end
 
 group :production do
   gem 'god'
-  gem 'unicorn'
+  gem 'puma'
   gem 'newrelic_rpm'
 end
 
