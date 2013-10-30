@@ -1,23 +1,19 @@
-rails_env = ENV['RAILS_ENV']
-rails_root = ENV['RAILS_ROOT']
-app_root = "#{rails_root}/current"
-
 God.watch do |w|
   w.name = 'puma'
   w.interval = 30.seconds # default
 
   # unicorn needs to be run from the rails root
-  w.start = "cd #{app_root} && bundle exec puma -C #{app_root}/config/puma.rb -e #{rails_env}"
+  w.start = "cd APP_ROOT && bundle exec puma -C APP_ROOT/config/puma.rb -e RAILS_ENV"
 
   # QUIT gracefully shuts down workers
-  w.stop = "kill -QUIT cat #{rails_root}/tmp/pids/puma.pid"
+  w.stop = "kill -QUIT cat RAILS_ROOT/tmp/pids/puma.pid"
 
   # USR2 causes the master to re-create itself and spawn a new worker pool
-  w.restart = "kill -USR2 cat #{rails_root}/tmp/pids/puma.pid"
+  w.restart = "kill -USR2 cat RAILS_ROOT/tmp/pids/puma.pid"
 
   w.start_grace = 10.seconds
   w.restart_grace = 10.seconds
-  w.pid_file = "#{rails_root}/tmp/pids/puma.pid"
+  w.pid_file = "RAILS_ROOT/tmp/pids/puma.pid"
 
   w.behavior(:clean_pid_file)
 
