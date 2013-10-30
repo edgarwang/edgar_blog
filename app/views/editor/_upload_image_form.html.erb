@@ -1,10 +1,11 @@
-<%= form_for :attachment, url: attachments_path(:json), :html => {:multipart => true} do |f| %>
+<%= form_for :attachment, url: attachments_path(:json), html: { multipart: true, id: 'upload-image' } do |f| %>
   <div class="field">
-    <div class="ui input">
+    <span class="ui button">
+      选择文件
       <%= f.file_field :file %>
-    </div>
+    </span>
   </div>
   <div class="actions field">
-    <%= f.submit 'Upload', class: "ui button" %>
+    <%= f.submit 'Upload', class: "ui upload image button" %>
   </div>
 <% end %>
