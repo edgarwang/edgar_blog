@@ -1,4 +1,4 @@
-threads 4,32
+threads 4,16
 workers 2
 bind "unix://RAILS_ROOT/tmp/socks/puma.sock"
 
