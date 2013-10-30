@@ -1,4 +1,4 @@
-app_root = "#{ENV["RAILS_ROOT"]}/current"
+app_root = ENV["RAILS_ROOT"]
 
 threads 4,32
 workers 2
