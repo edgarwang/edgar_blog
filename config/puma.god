@@ -1,12 +1,13 @@
 rails_env = ENV['RAILS_ENV']
 rails_root = ENV['RAILS_ROOT']
+app_root = "#{rails_root}/current"
 
 God.watch do |w|
   w.name = 'puma'
   w.interval = 30.seconds # default
 
   # unicorn needs to be run from the rails root
-  w.start = "cd #{rails_root} && bundle exec puma -c #{rails_root}/current/config/puma.rb -e #{rails_env}"
+  w.start = "cd #{app_root} && bundle exec puma -C #{app_root}/config/puma.rb -e #{rails_env}"
 
   # QUIT gracefully shuts down workers
   w.stop = "kill -QUIT cat #{rails_root}/tmp/pids/puma.pid"
