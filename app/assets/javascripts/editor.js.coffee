@@ -12,22 +12,6 @@
 #= require jquery-file-upload/js/jquery.iframe-transport
 #= require jquery-file-upload/js/jquery.fileupload
 
-# Enable markdown editor for blog content
-enableMarkdownEditor = ->
-  textArea = document.getElementById('content-editor')
-  if textArea
-    editor = CodeMirror.fromTextArea(textArea, {
-      mode: 'gfm',
-      viewportMargin: Infinity,
-      styleActiveLine: true,
-      setFirstLineAsTitleLine: true,
-      placeholder: 'Write something here',
-      lineWrapping: true
-    })
-    $('#content-editor').data('CodeMirrorInstance', editor)
-$(document).ready(enableMarkdownEditor)
-$(document).on('page:load', enableMarkdownEditor)
-
 # Sync two article slug input's value
 showSetArticleSlugModal = ->
   hiddenArticleSlug = document.querySelector('#article_slug')
@@ -45,58 +29,94 @@ showSetArticleSlugModal = ->
 $(document).ready(showSetArticleSlugModal)
 $(document).on('page:load', showSetArticleSlugModal)
 
+class @Editor
+  constructor: (@options) ->
+    @codemirror = @initCodeMirror(@options.textarea)
+    @toolbar = $(@options.toolbar)
 
-showUploadImageModal = ->
-  $('a.upload.image').on 'click', ->
+    @initToolbarActions()
+    @initImageUploadModal()
+    # Should be removed soon
+    $('#content-editor').data('CodeMirrorInstance', @codemirror)
+
+  initCodeMirror: (textarea) ->
+    CodeMirror.fromTextArea(textarea, {
+        mode: 'gfm',
+        viewportMargin: Infinity,
+        styleActiveLine: true,
+        setFirstLineAsTitleLine: true,
+        placeholder: 'Write something here',
+        lineWrapping: true
+      })
+
+  initToolbarActions: ->
+    editor = this
+    @toolbar.find('[data-action]').each (index, elem) ->
+      action = $(elem).data('action')
+      $(elem).bind 'click', (event) ->
+        event.preventDefault()
+        editor[action]($(elem))
+
+  initImageUploadModal: ->
+    $('#attachment_file').on 'change', (event) ->
+      imageName = $('#attachment_file').val()
+      $('.show.image.name').text(imageName)
+
+    # tigger attachment_file input
+    $('.choose.image.button').on 'click', (event) ->
+      event.preventDefault()
+      $('#attachment_file').click()
+
+    $uploadImageForm = $('#upload-image')
+    $uploadImageForm.fileupload {
+      type: 'POST'
+      dataType: 'json'
+
+      add: (event, data) =>
+        $uploadImageForm.off('submit')
+        $uploadImageForm.on 'submit', (event) ->
+          event.preventDefault()
+          data.submit()
+
+      done: (event, data) =>
+        @resetUploadImageForm()
+        @insertImageBlock(data.result.files[0])
+        $('.upload.image.modal').modal('hide')
+    }
+
+  resetUploadImageForm:  ->
+    $('#upload-image').off('submit')
+    $('.show.image.name').text('')
+
+  insertImageBlock: (image) ->
+    imageBlock = "![#{image.name}](#{image.url})"
+    @codemirror.replaceSelection(imageBlock)
+
+  undo: ($object) ->
+    @codemirror.undo()
+
+  heading: ($object) ->
+    @codemirror.replaceSelection $object.data('snippet')
+
+  "sub-heading": ($object) ->
+    @codemirror.replaceSelection $object.data('snippet')
+
+  bold: ($object) ->
+    @codemirror.replaceSelection $object.data('snippet')
+
+  italic: ($object) ->
+    @codemirror.replaceSelection $object.data('snippet')
+
+  image: ($object) ->
     $('.upload.image.modal')
       .modal('setting', 'debug', false)
-      .modal('setting', 'closable', false)
       .modal('show')
-$(document).ready(showUploadImageModal)
-$(document).on('page:load', showUploadImageModal)
 
-chooseImage = ->
-  # show filename after user choosed a image file
-  $('#attachment_file').on 'change', (event) =>
-    imageName = $('#attachment_file').val()
-    $('.show.image.name').text(imageName)
-
-  # tigger attachment_file input
-  $('.choose.image.button').on 'click', (event) =>
-    event.preventDefault()
-    $('#attachment_file').click()
-$(document).ready(chooseImage)
-$(document).on('page:load', chooseImage)
-
-
-resetUploadImageForm = ->
-  $('#upload-image').off('submit')
-  $('.show.image.name').text('')
-
-insertAtCursor = (instance, text) ->
-  instance.replaceSelection(text)
-
-insertImageBlock = (image) ->
-  imageBlock = "!["+image.name+"]("+image.url+")"
-  editor = $('#content-editor').data('CodeMirrorInstance')
-  insertAtCursor(editor, imageBlock)
-
-uploadImage = ->
-  $uploadImageForm = $('#upload-image')
-  $uploadImageForm.fileupload {
-    type: 'POST'
-    dataType: 'json'
-
-    add: (event, data) =>
-      $uploadImageForm.off('submit')
-      $uploadImageForm.on 'submit', (event) ->
-        event.preventDefault()
-        data.submit()
-
-    done: (event, data) =>
-      resetUploadImageForm()
-      insertImageBlock(data.result.files[0])
-      $('.upload.image.modal').modal('hide')
+loadEditor = ->
+  new Editor {
+    textarea: document.getElementById('content-editor'),
+    toolbar: '.editor.toolbar',
   }
-$(document).ready(uploadImage)
-$(document).on('page:load', uploadImage)
+
+$(document).ready(loadEditor)
+$(document).on('page:load', loadEditor)
