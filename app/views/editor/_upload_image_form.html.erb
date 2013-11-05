@@ -1,9 +1,13 @@
 <%= form_for :attachment, url: attachments_path(:json), html: { multipart: true, id: 'upload-image' } do |f| %>
-  <div class="field">
-    <span class="ui button">
+  <div class="ui segment">
+    <a class="ui choose image button">
       选择文件
-      <%= f.file_field :file %>
+    </a>
+    <span class="show image name">
     </span>
+  </div>
+  <div class="hidden field">
+    <%= f.file_field :file %>
   </div>
   <div class="actions field">
     <%= f.submit 'Upload', class: "ui upload image button" %>

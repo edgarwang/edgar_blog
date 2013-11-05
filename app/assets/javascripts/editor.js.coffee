@@ -16,7 +16,7 @@
 enableMarkdownEditor = ->
   textArea = document.getElementById('content-editor')
   if textArea
-    CodeMirror.fromTextArea(textArea, {
+    editor = CodeMirror.fromTextArea(textArea, {
       mode: 'gfm',
       viewportMargin: Infinity,
       styleActiveLine: true,
@@ -24,6 +24,7 @@ enableMarkdownEditor = ->
       placeholder: 'Write something here',
       lineWrapping: true
     })
+    $('#content-editor').data('CodeMirrorInstance', editor)
 $(document).ready(enableMarkdownEditor)
 $(document).on('page:load', enableMarkdownEditor)
 
@@ -54,8 +55,31 @@ showUploadImageModal = ->
 $(document).ready(showUploadImageModal)
 $(document).on('page:load', showUploadImageModal)
 
+chooseImage = ->
+  # show filename after user choosed a image file
+  $('#attachment_file').on 'change', (event) =>
+    imageName = $('#attachment_file').val()
+    $('.show.image.name').text(imageName)
+
+  # tigger attachment_file input
+  $('.choose.image.button').on 'click', (event) =>
+    event.preventDefault()
+    $('#attachment_file').click()
+$(document).ready(chooseImage)
+$(document).on('page:load', chooseImage)
+
+
 resetUploadImageForm = ->
-  $('#upload-image').off(submit)
+  $('#upload-image').off('submit')
+  $('.show.image.name').text('')
+
+insertAtCursor = (instance, text) ->
+  instance.replaceSelection(text)
+
+insertImageBlock = (image) ->
+  imageBlock = "!["+image.name+"]("+image.url+")"
+  editor = $('#content-editor').data('CodeMirrorInstance')
+  insertAtCursor(editor, imageBlock)
 
 uploadImage = ->
   $uploadImageForm = $('#upload-image')
@@ -71,6 +95,7 @@ uploadImage = ->
 
     done: (event, data) =>
       resetUploadImageForm()
+      insertImageBlock(data.result.files[0])
       $('.upload.image.modal').modal('hide')
   }
 $(document).ready(uploadImage)
