@@ -108,23 +108,37 @@ describe Dashboard::ArticlesController do
   end
 
   describe 'GET #show' do
-    before :each do
-      @article = create(:published_article)
+    context 'user does not signed in' do
+      before :each do
+        @article = create(:published_article)
+      end
+
+      it 'redrect to home#index page' do
+        get :show, { id: @article.to_param }
+        expect(response).to redirect_to(root_url)
+      end
     end
 
-    it 'returns http success' do
-      get :show, { id: @article.to_param }
-      expect(response).to be_success
-    end
+    context 'user has already signed in' do
+      before :each do
+        @article = create(:published_article)
+        set_user_session(user)
+      end
 
-    it 'assigns the requested published article as @article' do
-      get :show, { id: @article.to_param }
-      expect(assigns(:article)).to eq(@article)
-    end
+      it 'returns http success' do
+        get :show, { id: @article.to_param }
+        expect(response).to be_success
+      end
 
-    it 'renders :show template' do
-      get :show, { id: @article.to_param }
-      expect(response).to render_template :show
+      it 'assigns the requested published article as @article' do
+        get :show, { id: @article.to_param }
+        expect(assigns(:article)).to eq(@article)
+      end
+
+      it 'renders :show template' do
+        get :show, { id: @article.to_param }
+        expect(response).to render_template :show
+      end
     end
   end
 
