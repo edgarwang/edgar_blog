@@ -18,7 +18,7 @@ describe SessionsController do
       set_user_session(user)
 
       get :new
-      expect(response).to redirect_to(articles_url)
+      expect(response).to redirect_to(dashboard_root_url)
     end
   end
 
@@ -28,9 +28,9 @@ describe SessionsController do
         @user = create(:user)
       end
 
-      it 'redirect to articles page' do
+      it 'redirect to dashboard' do
         post :create, email: @user.email, password: 'secret'
-        expect(response).to redirect_to(articles_url)
+        expect(response).to redirect_to(dashboard_root_url)
       end
 
       it 'add user inforamtion to the session' do

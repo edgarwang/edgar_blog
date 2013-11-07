@@ -1,4 +1,4 @@
-class AttachmentsController < ApplicationController
+class Dashboard::AttachmentsController < ApplicationController
   layout 'dashboard'
   before_action :require_signed_in!
 
@@ -11,7 +11,7 @@ class AttachmentsController < ApplicationController
 
     if @attachment.save
       respond_to do |format|
-        format.html { redirect_to attachments_url, notice: 'Created Done' }
+        format.html { redirect_to dashboard_attachments_url, notice: 'Created Done' }
         format.json
       end
     end
@@ -25,7 +25,7 @@ class AttachmentsController < ApplicationController
     @attachment = Attachment.find(params[:id])
     @attachment.destroy
     respond_to do |format|
-      format.html { redirect_to attachments_url, notice: 'Delete Done' }
+      format.html { redirect_to dashboard_attachments_url, notice: 'Delete Done' }
     end
   end
 

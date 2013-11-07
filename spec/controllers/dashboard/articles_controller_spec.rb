@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ArticlesController do
+describe Dashboard::ArticlesController do
 
   let(:user) { create(:user) }
 
@@ -193,7 +193,7 @@ describe ArticlesController do
       it 'refuse to edit trashed article' do
         trashed_article = create(:trash_article)
         get :edit, { id: trashed_article.to_param }
-        expect(response).to redirect_to(articles_url)
+        expect(response).to redirect_to(dashboard_articles_url)
       end
     end
   end
@@ -230,7 +230,7 @@ describe ArticlesController do
 
         it 'redirects to index page' do
           post :create, { article: @valid_attributes }
-          expect(response).to redirect_to(articles_url)
+          expect(response).to redirect_to(dashboard_articles_url)
         end
       end
 
@@ -287,7 +287,7 @@ describe ArticlesController do
 
         it 'redirects to the index page' do
           put :update, { id: @article.to_param, article: @valid_update_attributes }
-          expect(response).to redirect_to(articles_url)
+          expect(response).to redirect_to(dashboard_articles_url)
         end
       end
 
@@ -403,7 +403,7 @@ describe ArticlesController do
 
       it 'redirects to the articles list' do
         delete :destroy, { id: @article.to_param }
-        expect(response).to redirect_to(articles_url)
+        expect(response).to redirect_to(dashboard_articles_url)
       end
     end
   end
@@ -430,7 +430,7 @@ describe ArticlesController do
 
       it 'redirects to the trashed articles list' do
         delete :empty_trash
-        expect(response).to redirect_to(trash_articles_url)
+        expect(response).to redirect_to(trash_dashboard_articles_url)
       end
     end
   end

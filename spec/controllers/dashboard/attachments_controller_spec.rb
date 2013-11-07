@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe AttachmentsController do
+describe Dashboard::AttachmentsController do
   let(:user) { create(:user) }
 
   context 'user has already signed in' do
@@ -28,7 +28,7 @@ describe AttachmentsController do
     describe 'POST #create' do
       it 'redirect to attachment index page' do
         post :create, attachment: attributes_for(:attachment)
-        expect(response).to redirect_to(attachments_url)
+        expect(response).to redirect_to(dashboard_attachments_url)
       end
 
       it 'add one more attachment to database' do
@@ -69,7 +69,7 @@ describe AttachmentsController do
 
       it 'redirect to attachment index page' do
         delete 'destroy', id: @attachment.to_param
-        expect(response).to redirect_to(attachments_url)
+        expect(response).to redirect_to(dashboard_attachments_url)
       end
 
       it 'delete an attachment from database' do

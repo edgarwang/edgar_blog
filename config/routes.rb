@@ -4,19 +4,24 @@ EdgarBlogs::Application.routes.draw do
   get 'home/index'
   get 'home/about'
 
-  resources :articles do
-    collection do
-      get 'trash', to: 'articles#trash'
-      delete 'trashed', to: 'articles#empty_trash'
+  namespace :dashboard do
+    root 'articles#index'
+
+    resources :articles do
+      collection do
+        get 'trash', to: 'articles#trash'
+        delete 'trashed', to: 'articles#empty_trash'
+      end
+      member do
+        post 'trash', to: 'articles#send_to_trash', as: 'send_to_trash'
+        post 'restore', to: 'articles#restore', as: 'restore'
+      end
     end
-    member do
-      post 'trash', to: 'articles#send_to_trash', as: 'send_to_trash'
-      post 'restore', to: 'articles#restore', as: 'restore'
-    end
+
+    resources :attachments, only: [:new, :create, :index, :destroy]
   end
 
   resources :users, only: [:create]
-  resources :attachments, only: [:new, :create, :index, :destroy]
 
   get '/sign_up', to: 'users#new'
   get '/sign_in', to: 'sessions#new'

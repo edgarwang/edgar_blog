@@ -2,14 +2,14 @@ class SessionsController < ApplicationController
   layout 'auth'
 
   def new
-    redirect_to articles_url, notice: 'Already signed in' unless session[:user_id].blank?
+    redirect_to dashboard_root_url, notice: 'Already signed in' unless session[:user_id].blank?
   end
 
   def create
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to articles_url
+      redirect_to dashboard_root_url
     else
       flash[:error] = 'Invalid email or password'
       render 'new'

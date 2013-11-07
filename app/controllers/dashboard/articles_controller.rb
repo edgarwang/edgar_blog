@@ -1,4 +1,4 @@
-class ArticlesController < ApplicationController
+class Dashboard::ArticlesController < ApplicationController
   layout 'editor'
   before_action :require_signed_in!, only: [:index, :new, :create,
                                             :edit, :update, :destroy,
@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.trash?
         flash[:alert] = 'Cannot edit trashed article'
-        format.html { redirect_to articles_url }
+        format.html { redirect_to dashboard_articles_url }
       else
         format.html
         format.json
@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
         flash[:success] = 'Article was successfully created.';
-        format.html { redirect_to articles_url }
+        format.html { redirect_to dashboard_articles_url }
         format.json { render action: 'show', status: :created, location: @article }
       else
         format.html { render action: 'new' }
@@ -69,7 +69,7 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.update(article_params)
         flash[:success] = 'Article was successfully updated.';
-        format.html { redirect_to articles_url }
+        format.html { redirect_to dashboard_articles_url }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -105,7 +105,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url }
+      format.html { redirect_to dashboard_articles_url }
       format.json { head :no_content }
     end
   end
@@ -116,7 +116,7 @@ class ArticlesController < ApplicationController
       article.destroy
     end
     respond_to do |format|
-      format.html { redirect_to trash_articles_url }
+      format.html { redirect_to trash_dashboard_articles_url }
     end
   end
 
