@@ -1,9 +1,6 @@
 class Dashboard::ArticlesController < ApplicationController
   layout 'editor'
-  before_action :require_signed_in!, only: [:index, :new, :create,
-                                            :edit, :update, :destroy,
-                                            :trash, :empty_trash, :restore,
-                                            :send_to_trash]
+  before_action :require_signed_in!
   before_action :set_article, only: [:show, :edit, :update, :destroy,
                                      :restore, :send_to_trash]
 

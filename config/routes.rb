@@ -21,6 +21,7 @@ EdgarBlogs::Application.routes.draw do
     resources :attachments, only: [:new, :create, :index, :destroy]
   end
 
+  resources :articles, only: [:show]
   resources :users, only: [:create]
 
   get '/sign_up', to: 'users#new'

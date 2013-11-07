@@ -1,0 +1,7 @@
+<div class="ui basic segment">
+  <h1 class="ui header"><%= @article.title %></h1>
+  <article class="article content"><%= @article.html_content %></article>
+  <div class="article comments">
+    <%= render "shared/disqus_comment" %>
+  </div>
+</div>

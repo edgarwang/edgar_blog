@@ -5,10 +5,10 @@
       <div class="right floated">
         <div class="ui basic buttons">
           <a class="ui restore article button" title="restore this article"
-            data-restore-article-path="<%= restore_article_path(article) %>">
+            data-restore-article-path="<%= restore_dashboard_article_path(article) %>">
             <i class="inbox icon"></i>
           </a>
-          <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' do %>
+          <%= link_to [:dashboard, article], method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' do %>
             <i class="remove icon"></i>
           <% end %>
         </div>
