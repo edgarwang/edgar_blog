@@ -21,7 +21,7 @@ class Dashboard::ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    not_found if !@article.published?
+    not_found if !!@article.trash?
     render layout: 'home'
   end
 

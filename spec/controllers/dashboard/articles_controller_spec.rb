@@ -135,6 +135,12 @@ describe Dashboard::ArticlesController do
         expect(assigns(:article)).to eq(@article)
       end
 
+      it 'works with draft article too' do
+        draft = create(:draft_article)
+        get :show, { id: draft.to_param }
+        expect(response).to be_success
+      end
+
       it 'renders :show template' do
         get :show, { id: @article.to_param }
         expect(response).to render_template :show
