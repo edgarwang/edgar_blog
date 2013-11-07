@@ -1,5 +1,5 @@
 <nav class="ui fixed transparent main menu">
-  <a class="link item" title="返回文章列表" href="<%= articles_path %>">
+  <a class="link item" title="返回文章列表" href="<%= dashboard_articles_path %>">
     <i class="level up icon"></i>
   </a>
 
@@ -8,7 +8,7 @@
   </a>
 
   <% if @article.persisted? %>
-    <a class="link item" target="_blank" href="<%= article_path(@article) %>">
+    <a class="link item" target="_blank" href="<%= dashboard_article_path(@article) %>">
       <i class="external url icon"></i>
     </a>
   <% end %>

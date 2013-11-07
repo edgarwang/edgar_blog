@@ -1,15 +1,15 @@
 <div class="ui tabular menu">
-  <a href="<%= articles_path(status: nil) %>" class="item <%= 'active' if params[:status].blank? %>">
+  <a href="<%= dashboard_articles_path(status: nil) %>" class="item <%= 'active' if params[:status].blank? %>">
     All
   </a>
-  <a href="<%= articles_path(status: 'published') %>" class="item <%= 'active' if published? %>">
+  <a href="<%= dashboard_articles_path(status: 'published') %>" class="item <%= 'active' if published? %>">
     Published
   </a>
-  <a href="<%= articles_path(status: 'draft') %>" class="item <%= 'active' if draft? %>">
+  <a href="<%= dashboard_articles_path(status: 'draft') %>" class="item <%= 'active' if draft? %>">
     Draft
   </a>
   <div class="right menu">
-    <%= link_to new_article_path, class: 'item' do %>
+    <%= link_to new_dashboard_article_path, class: 'item' do %>
       <i class="add icon"></i>
       New
     <% end %>

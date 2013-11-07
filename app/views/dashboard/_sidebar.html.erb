@@ -1,15 +1,15 @@
 <div class="ui vertical fluid menu">
-  <a href="<%= articles_path %>" class="item <%= "active" if articles_page? %>">
+  <a href="<%= dashboard_articles_path %>" class="item <%= "active" if articles_page? %>">
     <i class="file outline icon"></i>
     Articles
   </a>
 
-  <a href="<%= trash_articles_path %>" class="item <%= "active" if trashes_page? %>">
+  <a href="<%= trash_dashboard_articles_path %>" class="item <%= "active" if trashes_page? %>">
     <i class="trash icon"></i>
     Trash
   </a>
 
-  <a href="<%= attachments_path %>" class="item <%= "active" if attachments_page? %>">
+  <a href="<%= dashboard_attachments_path %>" class="item <%= "active" if attachments_page? %>">
     <i class="photo icon"></i>
     Photos
   </a>

@@ -113,10 +113,12 @@ class @Editor
       .modal('show')
 
 loadEditor = ->
-  new Editor {
-    textarea: document.getElementById('content-editor'),
-    toolbar: '.editor.toolbar',
-  }
+  editorArea = document.getElementById('content-editor')
+  if (editorArea)
+    new Editor {
+      textarea: editorArea,
+      toolbar: '.editor.toolbar',
+    }
 
 $(document).ready(loadEditor)
 $(document).on('page:load', loadEditor)

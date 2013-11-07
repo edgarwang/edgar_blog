@@ -5,12 +5,12 @@
       <div class="right floated">
         <div class="ui basic buttons">
           <% if article.published? %>
-            <%= link_to article, class: 'ui button' do %>
+            <%= link_to [:dashboard, article], class: 'ui button' do %>
               <i class="external url icon"></i>
             <% end %>
           <% end %>
           <a class="ui trash article button" title="Trash it"
-            data-send-to-trash-path="<%= send_to_trash_article_path(article) %>">
+            data-send-to-trash-path="<%= send_to_trash_dashboard_article_path(article) %>">
             <i class="trash icon"></i>
           </a>
         </div>
@@ -18,7 +18,7 @@
 
       <div class="content">
         <div class="header">
-          <%= link_to article.title, edit_article_path(article) %>
+          <%= link_to article.title, edit_dashboard_article_path(article) %>
         </div>
         <%= article.updated_at %>
       </div>
