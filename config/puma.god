@@ -6,10 +6,10 @@ God.watch do |w|
   w.start = "cd APP_ROOT && bundle exec puma -C APP_ROOT/config/puma.rb -e RAILS_ENV"
 
   # QUIT gracefully shuts down workers
-  w.stop = "kill -QUIT cat RAILS_ROOT/tmp/pids/puma.pid"
+  w.stop = "kill -s TERM  $(cat RAILS_ROOT/tmp/pids/puma.pid)"
 
   # USR2 causes the master to re-create itself and spawn a new worker pool
-  w.restart = "kill -USR2 cat RAILS_ROOT/tmp/pids/puma.pid"
+  w.restart = "kill -s USR2 $(cat RAILS_ROOT/tmp/pids/puma.pid)"
 
   w.start_grace = 10.seconds
   w.restart_grace = 10.seconds
