@@ -11,11 +11,11 @@
 </head>
 <body id="editor" class="<%= controller_name %> <%= action_name %>">
 
-<%= render "editor/top_menu" %>
+<%= render "dashboard/editor/top_menu" %>
 <div class="editor area">
     <%= yield %>
 </div>
-<%= render "editor/set_article_slug_modal" %>
+<%= render "dashboard/editor/set_article_slug_modal" %>
 
 <%= ::NewRelic::Agent.browser_timing_footer rescue "" %>
 </body>
