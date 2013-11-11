@@ -1,9 +1,18 @@
-<%= render "dashboard/editor/topbar" %>
-<div class="editor wrapper">
-  <div id="article">
-    <div class="info"></div>
-    <textarea id="content-editor" class="content" name="article[content]">
-      <%= @article.content %>
-    </textarea>
+<div class="editor">
+  <div class="sidebar">
+    <%= render "dashboard/editor/sidebar" %>
+  </div>
+  <div class="main">
+    <header class="ui small header">
+      <div class="article title">
+        <span>Editing:</span>
+        <a href="<%= article_path(@article) %>">
+          <%= @article.title %>
+        </a>
+      </div>
+    </header>
+    <div class="editarea">
+      <%= text_area_tag "article[content]", @article.content, id: "content-editor", data: { id: @article.id } %>
+    </div>
   </div>
 </div>

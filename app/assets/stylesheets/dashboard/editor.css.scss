@@ -1,32 +1,39 @@
-// Allow CodeMirror reize to fit content
-.CodeMirror {
-  border: 1px solid #eee;
-  line-height: 20px;
-  min-height: 400px;
-  height: auto;
-}
-.CodeMirror-scroll {
-  overflow-y: hidden;
-  overflow-x: auto;
-  .CodeMirror-sizer {
-    padding: 10px 5px 0 5px;
+.editor {
+  .sidebar {
+    position: fixed;
+    right: 30px;
+    top: 40px;
+    width: 60px;
+    height: 100%;
+  }
+
+  .main {
+    width: 61%;
+    margin: 40px auto 40px;
   }
 }
 
-.CodeMirror-activeline-background {
-  background: none repeat scroll 0% 0% rgb(255, 251, 235);
-  border-radius: 3px;
+.article.title {
+  margin-left: -80px;
+
+  color: rgb(212, 215, 217);
 }
 
-.editor.topbar {
-  top: 0;
-  background-color: rgb(247, 247, 247);
-}
+.sidebar ul#sidebar {
+  display: block;
+  list-style: none outside none;
+  padding: 0;
 
-.editor.wrapper {
-  padding-top: 70px;
-  width: 61%;
-  margin: 0 auto 3em;
+  li a {
+    margin: 5px;
+    background-image: none;
+    background-color: rgb(248, 248, 248) !important;
+  }
+
+  .active {
+    background-color: rgb(85, 85, 85) !important;
+    color: rgb(239, 239, 239) !important;
+  }
 }
 
 .upload.image {
@@ -37,7 +44,19 @@
   }
 }
 
-// hidden choose file field
-.hidden.field {
-  display: none;
+// Allow CodeMirror reize to fit content
+.CodeMirror {
+  font-size: 16px;
+  line-height: 20px;
+  min-height: 400px;
+  height: auto;
+}
+.CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.CodeMirror-activeline-background {
+  background-color:rgb(255, 251, 235);
+  border-radius: 3px;
 }
