@@ -12,7 +12,7 @@
       </div>
     </header>
     <div class="editarea">
-      <%= text_area_tag "article[content]", @article.content, id: "content-editor", data: { id: @article.id } %>
+      <%= article_edit_tag @article, 'content-editor' %>
     </div>
   </div>
 </div>
