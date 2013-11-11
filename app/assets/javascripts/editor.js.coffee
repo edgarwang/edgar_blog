@@ -115,10 +115,19 @@ class @Editor
 loadEditor = ->
   editorArea = document.getElementById('content-editor')
   if (editorArea)
-    new Editor {
+    editor = new Editor {
       textarea: editorArea,
       toolbar: '.editor.toolbar',
     }
+
+    $(".update.article.button").on "click", (event) ->
+      event.preventDefault()
+      article = $("#edit-article")
+      $.ajax(
+        url: article.data("update-path")
+        type: 'put'
+        data: { 'article[content]': editor.codemirror.getValue() }
+      )
 
 $(document).ready(loadEditor)
 $(document).on('page:load', loadEditor)
