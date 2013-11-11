@@ -18,11 +18,12 @@
   border-radius: 3px;
 }
 
-.main.menu {
-  border: none;
+.editor.topbar {
+  top: 0;
+  background-color: rgb(247, 247, 247);
 }
 
-.editor.area {
+.editor.wrapper {
   padding-top: 70px;
   width: 61%;
   margin: 0 auto 3em;

@@ -1,39 +1,9 @@
-<%= form_for([:dashboard, @article], html: { class: 'ui form' }) do |f| %>
-  <% if @article.errors.any? %>
-    <div class="ui error message">
-      <h2 class="header"><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
-      <ul class="list">
-      <% @article.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="two fields">
-    <div class="field">
-      <div class="ui left input">
-        <%= f.text_field :title, placeholder: "Article Title" %>
-      </div>
-    </div>
-    <div class="field">
-      <div class="ui left input">
-        <%= f.select :status, [['Draft', 'draft'], ['Published', 'published']] %>
-      </div>
-    </div>
+<%= render "dashboard/editor/topbar" %>
+<div class="editor wrapper">
+  <div id="article">
+    <div class="info"></div>
+    <textarea id="content-editor" class="content" name="article[content]">
+      <%= @article.content %>
+    </textarea>
   </div>
-  <div class="field">
-    <div class="ui left input">
-      <%= render 'dashboard/editor/editor_toolbar' %>
-      <%= f.text_area :content, id: 'content-editor' %>
-    </div>
-  </div>
-  <div class="field">
-    <div class="ui input">
-      <%= f.hidden_field :slug, placeholder: "Article Slug" %>
-    </div>
-  </div>
-  <div class="actions field">
-    <%= f.submit '保存', class: 'ui blue submit button' %>
-  </div>
-<% end %>
+</div>
