@@ -15,8 +15,13 @@
 
 .article.title {
   margin-left: -80px;
-
   color: rgb(212, 215, 217);
+
+  #article_title {
+    font-weight: bold;
+    background-color: transparent;
+    border: 1px solid transparent;
+  }
 }
 
 .sidebar ul#sidebar {

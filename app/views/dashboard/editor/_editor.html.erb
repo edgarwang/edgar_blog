@@ -6,9 +6,7 @@
     <header class="ui small header">
       <div class="article title">
         <span>Editing:</span>
-        <a href="<%= article_path(@article) %>">
-          <%= @article.title %>
-        </a>
+        <input id="article_title" name="article[title]" placeholder="Article title here" type="text" value="<%= @article.title %>">
       </div>
     </header>
     <div class="editarea">
