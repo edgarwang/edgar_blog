@@ -49,7 +49,7 @@ class Article < ActiveRecord::Base
   end
 
   def to_param
-    return id if slug.empty?
+    return id.to_s if slug.empty?
 
     [id, slug].join('-')
   end
