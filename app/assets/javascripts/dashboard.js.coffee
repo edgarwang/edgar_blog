@@ -1,5 +1,5 @@
 #= require common
-#= require editor
+#= require_tree ./dashboard
 
 sendArticleToTrash = ->
   $('.trash.article.button').on 'click', ->
