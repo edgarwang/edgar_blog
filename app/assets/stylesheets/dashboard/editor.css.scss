@@ -65,3 +65,17 @@
   background-color:rgb(255, 251, 235);
   border-radius: 3px;
 }
+
+.ui.modal {
+  top: 40%;
+  margin-left: -25%;
+  width: 50%;
+
+  .content {
+    padding-top: 1em;
+  }
+
+  .setting {
+    margin-bottom: 1em;
+  }
+}

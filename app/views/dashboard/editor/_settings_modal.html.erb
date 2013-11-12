@@ -1,0 +1,19 @@
+<div id="settings" class="ui article settings modal">
+  <i class="close icon"></i>
+  <h3 class="ui top attached header">Settings</h3>
+  <div class="content">
+    <div class="status setting">
+      <h2 class="ui header">Change Status</h2>
+      <div class="ui buttons">
+        <div class="ui publish button" data-status="published">Publish</div>
+        <div class="ui draft button" data-status="draft">Draft</div>
+      </div>
+    </div>
+    <div class="slug setting">
+      <h2 class="ui header">Change Slug</h2>
+      <div class="ui fluid input">
+        <input id="article_slug" type="text" name="article[slug]" placeholder="Article slug here" value="<%= @article.slug %>">
+      </div>
+    </div>
+  </div>
+</div>
