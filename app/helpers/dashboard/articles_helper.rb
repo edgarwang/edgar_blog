@@ -26,6 +26,7 @@ module Dashboard::ArticlesHelper
     raw text_area_tag('article[content]',
                   article.content,
                   id: id,
+                  class: 'article',
                   data: article_info)
   end
 

@@ -19,11 +19,10 @@ class @Editor
 
     @initToolbarActions()
     @initImageUploadModal()
-    # Should be removed soon
-    $('#content-editor').data('CodeMirrorInstance', @codemirror)
 
   initCodeMirror: (textarea) ->
-    CodeMirror.fromTextArea(textarea, {
+    editorArea = document.getElementById(textarea)
+    CodeMirror.fromTextArea(editorArea, {
         mode: 'gfm',
         viewportMargin: Infinity,
         styleActiveLine: true,
@@ -94,37 +93,3 @@ class @Editor
     $('.upload.image.modal')
       .modal('setting', 'debug', false)
       .modal('show')
-
-loadEditor = ->
-  editorArea = document.getElementById('content-editor')
-  if (editorArea)
-    editor = new Editor {
-      textarea: editorArea,
-      toolbar: '.editor.toolbar',
-    }
-
-    $("#sidebar .save.button").on "click", (event) ->
-      event.preventDefault()
-      $article = $("#content-editor")
-      if !!$article.data("id")
-        $.ajax(
-          url: $article.data("save-article-path")
-          type: 'put'
-          data: { 'article[content]': editor.codemirror.getValue() }
-        )
-      else
-        $.ajax(
-          url: $article.data("save-article-path")
-          type: 'post'
-          data:
-            article:
-              title: $('#article_title').val()
-              content: editor.codemirror.getValue()
-              slug: $article.data("slug")
-              status: $article.data("status")
-        ).done((data) =>
-          window.location.replace("/dashboard/articles/#{data.id}-#{data.slug}/edit")
-        )
-
-$(document).ready(loadEditor)
-$(document).on('page:load', loadEditor)
