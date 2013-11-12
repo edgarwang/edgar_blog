@@ -103,14 +103,28 @@ loadEditor = ->
       toolbar: '.editor.toolbar',
     }
 
-    $(".update.article.button").on "click", (event) ->
+    $("#sidebar .save.button").on "click", (event) ->
       event.preventDefault()
-      article = $("#edit-article")
-      $.ajax(
-        url: article.data("update-path")
-        type: 'put'
-        data: { 'article[content]': editor.codemirror.getValue() }
-      )
+      $article = $("#content-editor")
+      if !!$article.data("id")
+        $.ajax(
+          url: $article.data("save-article-path")
+          type: 'put'
+          data: { 'article[content]': editor.codemirror.getValue() }
+        )
+      else
+        $.ajax(
+          url: $article.data("save-article-path")
+          type: 'post'
+          data:
+            article:
+              title: $('#article_title').val()
+              content: editor.codemirror.getValue()
+              slug: $article.data("slug")
+              status: $article.data("status")
+        ).done((data) =>
+          window.location.replace("/dashboard/articles/#{data.id}-#{data.slug}/edit")
+        )
 
 $(document).ready(loadEditor)
 $(document).on('page:load', loadEditor)
