@@ -19,6 +19,8 @@ gem 'rouge'
 gem 'mini_magick'
 gem 'carrierwave'
 
+gem 'coveralls', require: false
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
