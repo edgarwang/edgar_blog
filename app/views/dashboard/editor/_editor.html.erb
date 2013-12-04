@@ -1,0 +1,18 @@
+<div class="editor">
+  <div class="sidebar">
+    <%= render "dashboard/editor/sidebar" %>
+  </div>
+  <div class="main">
+    <header class="ui small header">
+      <div class="article title">
+        <span>Editing:</span>
+        <input id="article_title" name="article[title]" placeholder="Article title here" type="text" value="<%= @article.title %>">
+      </div>
+    </header>
+    <div id="editarea">
+      <%= article_edit_tag @article, 'content-editor' %>
+    </div>
+  </div>
+</div>
+
+<%= render "dashboard/editor/settings_modal" %>

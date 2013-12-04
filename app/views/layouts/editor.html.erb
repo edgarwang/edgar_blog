@@ -7,16 +7,8 @@
   <%= stylesheet_link_tag    "dashboard", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "dashboard", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-  <%= ::NewRelic::Agent.browser_timing_header rescue "" %>
 </head>
 <body id="editor" class="<%= controller_name %> <%= action_name %>">
-
-<%= render "editor/top_menu" %>
-<div class="editor area">
-    <%= yield %>
-</div>
-<%= render "editor/set_article_slug_modal" %>
-
-<%= ::NewRelic::Agent.browser_timing_footer rescue "" %>
+  <%= yield %>
 </body>
 </html>

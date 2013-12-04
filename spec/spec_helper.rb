@@ -2,6 +2,9 @@ require 'rubygems'
 require 'spork'
 require 'database_cleaner'
 
+require 'coveralls'
+Coveralls.wear!
+
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)

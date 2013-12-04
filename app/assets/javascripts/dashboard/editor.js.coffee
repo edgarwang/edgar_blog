@@ -12,23 +12,6 @@
 #= require jquery-file-upload/js/jquery.iframe-transport
 #= require jquery-file-upload/js/jquery.fileupload
 
-# Sync two article slug input's value
-showSetArticleSlugModal = ->
-  hiddenArticleSlug = document.querySelector('#article_slug')
-  modalArticleSlug = document.querySelector('#article-slug')
-  $('#save-slug').on 'click', ->
-    hiddenArticleSlug.value = modalArticleSlug.value
-  $('#set-article-slug').on 'click', ->
-    $('.article.slug.modal')
-      .modal('setting', 'debug', false)
-      .modal('setting', 'closable', false)
-      .modal('setting', 'onShow', ->
-        modalArticleSlug.value = hiddenArticleSlug.value
-      )
-      .modal('show')
-$(document).ready(showSetArticleSlugModal)
-$(document).on('page:load', showSetArticleSlugModal)
-
 class @Editor
   constructor: (@options) ->
     @codemirror = @initCodeMirror(@options.textarea)
@@ -36,11 +19,10 @@ class @Editor
 
     @initToolbarActions()
     @initImageUploadModal()
-    # Should be removed soon
-    $('#content-editor').data('CodeMirrorInstance', @codemirror)
 
   initCodeMirror: (textarea) ->
-    CodeMirror.fromTextArea(textarea, {
+    editorArea = document.getElementById(textarea)
+    CodeMirror.fromTextArea(editorArea, {
         mode: 'gfm',
         viewportMargin: Infinity,
         styleActiveLine: true,
@@ -111,14 +93,3 @@ class @Editor
     $('.upload.image.modal')
       .modal('setting', 'debug', false)
       .modal('show')
-
-loadEditor = ->
-  editorArea = document.getElementById('content-editor')
-  if (editorArea)
-    new Editor {
-      textarea: editorArea,
-      toolbar: '.editor.toolbar',
-    }
-
-$(document).ready(loadEditor)
-$(document).on('page:load', loadEditor)

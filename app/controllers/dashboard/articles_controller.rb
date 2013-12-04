@@ -52,7 +52,7 @@ class Dashboard::ArticlesController < ApplicationController
       if @article.save
         flash[:success] = 'Article was successfully created.';
         format.html { redirect_to dashboard_articles_url }
-        format.json { render action: 'show', status: :created, location: @article }
+        format.json { render :article }
       else
         format.html { render action: 'new' }
         format.json { render json: @article.errors, status: :unprocessable_entity }
@@ -67,7 +67,7 @@ class Dashboard::ArticlesController < ApplicationController
       if @article.update(article_params)
         flash[:success] = 'Article was successfully updated.';
         format.html { redirect_to dashboard_articles_url }
-        format.json { head :no_content }
+        format.json { render :article }
       else
         format.html { render action: 'edit' }
         format.json { render json: @article.errors, status: :unprocessable_entity }

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :only_allow_one_user
-  layout 'auth'
+  layout 'sessions'
 
   def new
     @user = User.new
