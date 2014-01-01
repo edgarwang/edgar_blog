@@ -27,7 +27,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'spring'
   gem 'thin'
   gem 'guard'
   gem 'rb-fsevent', :require => false
