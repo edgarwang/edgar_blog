@@ -27,3 +27,6 @@ config/newrelic.yml
 
 # Ignore uploads dir
 public/uploads
+
+# Ignore coverage dir
+coverage/
