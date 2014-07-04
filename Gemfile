@@ -31,8 +31,6 @@ group :development do
   gem 'guard'
   gem 'rb-fsevent', :require => false
   gem 'guard-rspec', require: false
-  gem 'guard-spork'
-  gem 'spork-rails'
 end
 
 group :test do
@@ -42,7 +40,6 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
-  gem 'spork'
 end
 
 group :production do
