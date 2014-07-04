@@ -29,16 +29,14 @@ end
 group :development do
   gem 'thin'
   gem 'guard'
-  gem 'rb-fsevent', :require => false
+  gem 'rb-fsevent', require: false
   gem 'guard-rspec', require: false
 end
 
 group :test do
   gem 'faker'
-  gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'
-  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
 end
 
