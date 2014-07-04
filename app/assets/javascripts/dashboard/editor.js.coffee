@@ -6,7 +6,6 @@
 #= require codemirror/mode/markdown/markdown
 #= require codemirror/mode/javascript/javascript
 #= require codemirror/mode/clike/clike
-#= require codemirror/mode/ocaml/ocaml
 #= require codemirror/mode/ruby/ruby
 #= require jquery-file-upload/js/vendor/jquery.ui.widget.js 
 #= require jquery-file-upload/js/jquery.iframe-transport
