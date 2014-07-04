@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe HomeController do
+describe HomeController, :type => :controller do
 
   context 'does not has a user in database' do
     describe 'GET #index' do

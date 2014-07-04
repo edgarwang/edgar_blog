@@ -104,17 +104,17 @@ describe Article do
   describe 'has status determine method' do
     it '#published?' do
       published = build(:published_article)
-      expect(published.published?).to be_true
+      expect(published.published?).to be true
     end
 
     it '#draft?' do
       draft = build(:draft_article)
-      expect(draft.draft?).to be_true
+      expect(draft.draft?).to be true
     end
 
     it '#trash?' do
       trash = build(:trash_article)
-      expect(trash.trash?).to be_true
+      expect(trash.trash?).to be true
     end
   end
 

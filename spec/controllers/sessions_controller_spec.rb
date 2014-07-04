@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SessionsController do
+describe SessionsController, :type => :controller do
 
   describe 'GET #new (sign in page)' do
     it 'returns http success' do

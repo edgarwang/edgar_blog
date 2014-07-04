@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Dashboard::ArticlesController do
+describe Dashboard::ArticlesController, :type => :controller do
 
   let(:user) { create(:user) }
 
@@ -260,14 +260,14 @@ describe Dashboard::ArticlesController do
         end
         it 'assigns a newly created but unsaved article as @article' do
           # Trigger the behavior that occurs when invalid params are submitted
-          Article.any_instance.stub(:save).and_return(false)
+          expect_any_instance_of(Article).to receive(:save).and_return(false)
           post :create, { article: @invalid_attibutes }
           expect(assigns(:article)).to be_a_new(Article)
         end
 
         it 're-renders the :new template' do
           # Trigger the behavior that occurs when invalid params are submitted
-          Article.any_instance.stub(:save).and_return(false)
+          expect_any_instance_of(Article).to receive(:save).and_return(false)
           post :create, { article: @invalid_attibutes}
           expect(response).to render_template :new
         end
@@ -296,7 +296,7 @@ describe Dashboard::ArticlesController do
 
       describe 'with valid params' do
         it 'updates the requested article' do
-          Article.any_instance.should_receive(:update).with(@valid_update_attributes)
+          expect_any_instance_of(Article).to receive(:update).and_return(@valid_update_attributes)
           put :update, { id: @article.to_param, article: @valid_update_attributes }
         end
 
@@ -314,14 +314,14 @@ describe Dashboard::ArticlesController do
       describe 'with invalid params' do
         it 'assigns the article as @article' do
           # Trigger the behavior that occurs when invalid params are submitted
-          Article.any_instance.stub(:save).and_return(false)
+          expect_any_instance_of(Article).to receive(:save).and_return(false)
           put :update, { id: @article.to_param, article: @invalid_update_attributes }
           expect(assigns(:article)).to eq(@article)
         end
 
         it 're-renders the :edit template' do
           # Trigger the behavior that occurs when invalid params are submitted
-          Article.any_instance.stub(:save).and_return(false)
+          expect_any_instance_of(Article).to receive(:save).and_return(false)
           put :update, { id: @article.to_param, article: @invalid_update_attributes }
           expect(response).to render_template :edit
         end

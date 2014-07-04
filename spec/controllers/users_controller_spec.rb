@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UsersController do
+describe UsersController, :type => :controller do
 
   describe 'GET #new (sign up page)' do
     it 'returns http success' do

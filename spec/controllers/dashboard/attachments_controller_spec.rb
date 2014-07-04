@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Dashboard::AttachmentsController do
+describe Dashboard::AttachmentsController, :type => :controller do
   let(:user) { create(:user) }
 
   context 'user has already signed in' do
