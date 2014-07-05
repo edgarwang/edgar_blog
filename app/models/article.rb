@@ -4,7 +4,7 @@ class Article < ActiveRecord::Base
   validates :title, presence: true
   validates :slug, allow_blank: true, format: {
     with: /\A[a-z1-9][-a-z1-9]+[^-]\z/,
-    message: "Only lower letters and - allowed"
+    message: 'Only lower letters and dash allowed'
   }
   validates :status, inclusion: { in: %w(published draft trash) }
 
@@ -29,21 +29,23 @@ class Article < ActiveRecord::Base
 
   # Send an article to trash bin
   def send_to_trash
-    self.status = 'trash'
+    update_attribute :status, 'trash'
   end
 
   # Restore an article from trash bin
   def restore
-    self.status = 'draft' if self.status == 'trash'
+    update_attribute :status, 'draft' if status == 'trash'
   end
 
   # 3 methods to determine article's status
   def draft?
     status == 'draft'
   end
+
   def published?
     status == 'published'
   end
+
   def trash?
     status == 'trash'
   end
@@ -55,11 +57,12 @@ class Article < ActiveRecord::Base
   end
 
   def html_content
-    render_markdown(self.content)
+    render_markdown(content)
   end
 
   private
-    def generate_slug
-      self.slug = self.title.parameterize if self.slug.blank?
-    end
+
+  def generate_slug
+    update_attribute :slug, title.parameterize if slug.blank?
+  end
 end
