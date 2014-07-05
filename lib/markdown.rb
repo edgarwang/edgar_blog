@@ -5,9 +5,9 @@ class HTMLRender < Redcarpet::Render::HTML
 
   def block_code(code, language)
     begin
-      Rouge.highlight(code, language, 'html') 
+      Rouge.highlight(code, language, 'html')
     rescue RuntimeError
-      Rouge.highlight(code, 'text', 'html') 
+      Rouge.highlight(code, 'text', 'html')
     end
   end
 end
