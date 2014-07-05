@@ -30,6 +30,7 @@ class Dashboard::AttachmentsController < ApplicationController
   end
 
   private
+
   def attachment_params
     params.require(:attachment).permit(:file, :remote_file_url)
   end
