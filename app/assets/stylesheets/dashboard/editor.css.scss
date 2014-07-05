@@ -41,14 +41,6 @@
   }
 }
 
-.upload.image {
-  color: rgb(51, 51, 51);
-  cursor: pointer;
-  &:hover {
-    text-decoration: none;
-  }
-}
-
 // Allow CodeMirror reize to fit content
 .CodeMirror {
   font-size: 16px;

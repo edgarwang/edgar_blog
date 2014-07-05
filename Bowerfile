@@ -1,4 +1,3 @@
 asset 'normalize-css'
 asset 'semantic-rails'
 asset 'codemirror'
-asset 'jquery-file-upload'
