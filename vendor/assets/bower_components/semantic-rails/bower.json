@@ -1,0 +1,25 @@
+{
+  "name": "semantic-rails",
+  "version": "0.18.0",
+  "author": {
+    "name": "Edgar Wang"
+  },
+  "main": [
+    "semantic.min.css",
+    "semantic.min.js",
+    "fonts/*",
+    "images/*"
+  ],
+  "keywords": [
+    "semantic",
+    "ui",
+    "framework"
+  ],
+  "license" : [
+    "http://semantic-ui.mit-license.org/"
+  ],
+  "ignore": [
+    "Rakefile",
+    "README.markdown"
+  ]
+}

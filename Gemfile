@@ -8,7 +8,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.1.1'
-gem 'bower-rails'
 gem 'settingslogic'
 
 gem 'bcrypt', '~> 3.1.7', require: false
