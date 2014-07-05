@@ -29,12 +29,12 @@ class Article < ActiveRecord::Base
 
   # Send an article to trash bin
   def send_to_trash
-    update_attribute :status, 'trash'
+    self.status = 'trash'
   end
 
   # Restore an article from trash bin
   def restore
-    update_attribute :status, 'draft' if status == 'trash'
+    self.status = 'draft' if status == 'trash'
   end
 
   # 3 methods to determine article's status
@@ -63,6 +63,6 @@ class Article < ActiveRecord::Base
   private
 
   def generate_slug
-    update_attribute :slug, title.parameterize if slug.blank?
+    self.slug = title.parameterize if slug.blank?
   end
 end
