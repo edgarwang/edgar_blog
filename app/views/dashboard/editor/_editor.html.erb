@@ -1,15 +1,14 @@
-<div class="editor">
+<div class="ui form editor">
   <div class="sidebar">
     <%= render "dashboard/editor/sidebar" %>
   </div>
   <div class="main">
     <header class="ui small header">
-      <div class="article title">
-        <span>Editing:</span>
+      <div class="field article title">
         <input id="article_title" name="article[title]" placeholder="Article title here" type="text" value="<%= @article.title %>">
       </div>
     </header>
-    <div id="editarea">
+    <div id="editarea" class="field">
       <%= article_edit_tag @article, 'content-editor' %>
     </div>
   </div>
