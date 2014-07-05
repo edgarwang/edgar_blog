@@ -41,23 +41,6 @@
   }
 }
 
-// Allow CodeMirror reize to fit content
-.CodeMirror {
-  font-size: 16px;
-  line-height: 20px;
-  min-height: 400px;
-  height: auto;
-}
-.CodeMirror-scroll {
-  overflow-y: hidden;
-  overflow-x: auto;
-}
-
-.CodeMirror-activeline-background {
-  background-color:rgb(255, 251, 235);
-  border-radius: 3px;
-}
-
 .ui.modal {
   top: 40%;
   margin-left: -25%;

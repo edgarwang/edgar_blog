@@ -1,10 +1,7 @@
 class @ArticleEdit
   constructor:  ->
     @article = $("#editarea .article")
-    @editor = new Editor {
-      textarea: "content-editor"
-      toolbar: ".editor.toolbar"
-    }
+    @editor = $("#content-editor")
 
     @bindActions()
     @initSettingsModal()
@@ -75,7 +72,7 @@ class @ArticleEdit
       data:
         article:
           title: $('#article_title').val()
-          content: @editor.codemirror.getValue()
+          content: @editor.val()
     )
 
   createArticle: ->
@@ -85,7 +82,7 @@ class @ArticleEdit
       data:
         article:
           title: $('#article_title').val()
-          content: @editor.codemirror.getValue()
+          content: @editor.val()
           slug: @article.data("slug")
           status: @article.data("status")
     ).done((data) =>
