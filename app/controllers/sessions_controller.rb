@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   layout 'sessions'
 
   def new
-    redirect_to dashboard_root_url, notice: 'Already signed in' unless session[:user_id].blank?
+    redirect_to dashboard_root_url unless session[:user_id].blank?
   end
 
   def create
